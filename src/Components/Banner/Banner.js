@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export const NavBtnLink = styled.div`
+export const JoinLink = styled.div`
 	border-radius: 50px;
 	background: #202020;
 	white-space: nowrap;
@@ -46,7 +46,7 @@ const Banner = () => {
 					</div>
 
 					<div style={{ marginTop: "5%" }}>
-						<NavBtnLink
+						<JoinLink
 							style={{
 								color: "#202020",
 								backgroundColor: "#ffffff",
@@ -54,7 +54,7 @@ const Banner = () => {
 							}}
 						>
 							JOIN NOW
-						</NavBtnLink>
+						</JoinLink>
 					</div>
 
 					<div style={{ display: "flex", marginTop: "10%" }}>
