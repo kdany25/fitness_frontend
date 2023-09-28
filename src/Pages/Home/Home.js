@@ -3,6 +3,7 @@ import HomeNavBar from "../../Components/HomeNavBar/HomeNavBar";
 import Banner from "../../Components/Banner/Banner";
 import Choose from "../../Components/ChoosePersonal/Choose";
 import ChooseTrainers from "../../Components/ChooseTrainers/ChooseTrainers";
+import ChooseOffers from "../../Components/ChooseOffers/ChooseOffers";
 
 const Home = () => {
 	return (
@@ -21,6 +22,7 @@ const Home = () => {
 					<Banner />
 					<Choose />
 					<ChooseTrainers />
+          <ChooseOffers/>
 				</div>
 			</div>
 		</div>

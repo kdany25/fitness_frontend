@@ -36,7 +36,7 @@ const Choose = () => {
 						style={{
 							width: "300px",
 							border: "2px solid #007CFF",
-
+              backgroundColor:'#F6F9FF',
 							borderRadius: "20px",
 						}}
 					>
@@ -68,8 +68,8 @@ const Choose = () => {
 						style={{
 							width: "300px",
 							border: "2px solid #A3A5BB",
-
 							borderRadius: "20px",
+              backgroundColor:'#F6F9FF'
 						}}
 					>
             <div

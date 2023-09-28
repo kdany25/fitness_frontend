@@ -34,9 +34,17 @@ const ChooseTrainers = () => {
 					style={{
 						width: "400px",
 						borderRadius: "10px",
+						border: "2px solid #EBE9E6",
+            backgroundColor:'#F6F9FF',
 					}}
 				>
-					<div style={{ display: "flex", justifyContent: "center" }}>
+					<div
+						style={{
+							display: "flex",
+							justifyContent: "center",
+							marginTop: "1%",
+						}}
+					>
 						<img
 							src="https://i.ibb.co/7zB46ZT/Screen-Shot-2023-09-26-at-20-07-29.png"
 							width={200}
@@ -70,11 +78,17 @@ const ChooseTrainers = () => {
 					style={{
 						width: "400px",
 						borderRadius: "10px",
-            border:'2px solid #007CFF'
-            
+						border: "2px solid #007CFF",
+            backgroundColor:'#F6F9FF',
 					}}
 				>
-					<div style={{ display: "flex", justifyContent: "center" }}>
+					<div
+						style={{
+							display: "flex",
+							justifyContent: "center",
+							marginTop: "1%",
+						}}
+					>
 						<img
 							src="https://i.ibb.co/FqLp9b9/Screen-Shot-2023-09-26-at-19-55-06.png"
 							width={200}
@@ -107,9 +121,17 @@ const ChooseTrainers = () => {
 					style={{
 						width: "400px",
 						borderRadius: "10px",
+						border: "2px solid #EBE9E6",
+            backgroundColor:'#F6F9FF',
 					}}
 				>
-					<div style={{ display: "flex", justifyContent: "center" }}>
+					<div
+						style={{
+							display: "flex",
+							justifyContent: "center",
+							marginTop: "1%",
+						}}
+					>
 						<img
 							src="https://i.ibb.co/b7Fj8Cq/Screen-Shot-2023-09-26-at-19-52-18.png"
 							width={200}
