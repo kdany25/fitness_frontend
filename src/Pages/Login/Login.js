@@ -1,61 +1,30 @@
-import React from "react";
-import styled from "styled-components";
-
-export const JoinLink = styled.div`
-	border-radius: 50px;
-	background: #202020;
-	white-space: nowrap;
-	padding: 10px 22px;
-	color: #ffffff;
-	font-size: 16px;
-	outline: none;
-	border: none;
-	cursor: pointer;
-	transition: all 0.2s ease-in-out;
-	text-decoration: none;
-	width: 100px;
-	text-align: center;
-
-	&:hover {
-		transition: all 0.2s ease-in-out;
-		background: #ffffff;
-		color: #6c63ff;
-	}
-`;
-
-export const LoginBtn = styled.div`
-	border-radius: 50px;
-	background: #202020;
-	white-space: nowrap;
-	padding: 25px 22px;
-	color: #ffffff;
-	font-size: 16px;
-	outline: none;
-	border: none;
-	cursor: pointer;
-	transition: all 0.2s ease-in-out;
-	text-decoration: none;
-	width: 200px;
-	text-align: center;
-
-	&:hover {
-		transition: all 0.2s ease-in-out;
-		background: #ffffff;
-		color: #6c63ff;
-	}
-`;
+import React, { useState } from "react";
+import { JoinLink, LoginBtn } from "./style";
+import { useDispatch } from "react-redux";
+import { login } from "../../Helpers/ApiCalls";
+import { useSelector } from "react-redux";
 
 const Login = () => {
+	const [email, setEmail] = useState();
+	const [password, setPassword] = useState();
+	const dispatch = useDispatch();
+
+	const handleLogin = () => {
+		login(dispatch, { email, password });
+	};
 	return (
 		<div style={{ display: "flex", height: "100vh" }}>
-			<div style={{ width: "55%", marginTop:'5%' }}>
-        <img src="https://i.ibb.co/SsyHSrq/3582369.jpg" style={{width:'100%', height:'100%'}}/>      </div>
+			<div style={{ width: "55%", marginTop: "5%" }}>
+				<img
+					src="https://i.ibb.co/SsyHSrq/3582369.jpg"
+					style={{ width: "100%", height: "100%" }}
+				/>{" "}
+			</div>
 
 			<div
 				style={{
 					width: "45%",
 					marginRight: "5%",
-			
 				}}
 			>
 				<div
@@ -82,6 +51,7 @@ const Login = () => {
 							fontWeight: "Bold",
 							marginLeft: "1%",
 						}}
+						to="/signUp"
 					>
 						SIGN UP
 					</JoinLink>
@@ -126,6 +96,7 @@ const Login = () => {
 								fontSize: "16px",
 								color: "#A3A5BB",
 							}}
+							onChange={(e, v) => setEmail(e.target.value)}
 						/>
 					</div>
 				</div>
@@ -146,6 +117,7 @@ const Login = () => {
 								fontSize: "16px",
 								color: "#A3A5BB",
 							}}
+							onChange={(e, v) => setPassword(e.target.value)}
 						/>
 					</div>
 				</div>
@@ -156,6 +128,7 @@ const Login = () => {
 							backgroundColor: "#007CFF",
 							fontWeight: "Bold",
 						}}
+						onClick={() => handleLogin()}
 					>
 						Login
 					</LoginBtn>
@@ -170,7 +143,6 @@ const Login = () => {
 				>
 					Forgot password ?
 				</div>
-
 			</div>
 		</div>
 	);

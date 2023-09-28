@@ -1,13 +1,23 @@
+import React, { Fragment } from "react";
 import "./App.css";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUP";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
 	return (
-		<div className="App">
-			<SignUp />
-		</div>
+		<Router>
+			<Fragment>
+				<Routes>
+					<Route path="/" element={<Home />} />
+
+					<Route path="/signUp" element={<SignUp />} />
+
+					<Route exact path="/login" element={<Login />} />
+				</Routes>
+			</Fragment>
+		</Router>
 	);
 }
 

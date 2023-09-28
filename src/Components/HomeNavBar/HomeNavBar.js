@@ -1,36 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-import { Link as LinkR } from "react-router-dom";
-
-export const NavBtn = styled.nav`
-	display: flex;
-	align-items: center;
-
-	@media screen and (max-width: 960px) {
-		display: none;
-	}
-`;
-
-export const NavBtnLink = styled.div`
-	border-radius: 50px;
-	background: #202020;
-	white-space: nowrap;
-	padding: 10px 22px;
-	color: #ededed;
-	font-size: 16px;
-	outline: none;
-	border: none;
-	cursor: pointer;
-	transition: all 0.2s ease-in-out;
-	text-decoration: none;
-	margin-left: 24px;
-
-	&:hover {
-		transition: all 0.2s ease-in-out;
-		background: #ffffff;
-		color: #6c63ff;
-	}
-`;
+import { NavBtn, NavBtnLink } from "./style";
 
 const HomeNavBar = () => {
 	return (
@@ -72,7 +41,7 @@ const HomeNavBar = () => {
 							style={{
 								padding: "15px",
 								cursor: "pointer",
-                fontWeight:'bold'
+								fontWeight: "bold",
 							}}
 						>
 							Home
@@ -110,10 +79,11 @@ const HomeNavBar = () => {
 								backgroundColor: "#ffffff",
 								border: "1px solid #202020",
 							}}
+							to="/signUp"
 						>
 							Register
 						</NavBtnLink>
-						<NavBtnLink>Login</NavBtnLink>
+						<NavBtnLink to="/login">Login</NavBtnLink>
 					</NavBtn>
 				</div>
 			</div>
