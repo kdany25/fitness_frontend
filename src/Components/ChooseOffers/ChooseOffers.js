@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { GrStatusGood } from "react-icons/gr";
 import { CgGym } from "react-icons/cg";
 import { TbMassage, TbYoga } from "react-icons/tb";
 import { GrYoga } from "react-icons/gr";
 import { RxCrossCircled, RxCheckCircled } from "react-icons/rx";
 import styled from "styled-components";
+import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { BASE_URL } from "../../Helpers/requestMethod";
+import { useSelector } from "react-redux";
 
 export const JoinLink = styled.div`
 	border-radius: 50px;
@@ -28,7 +33,87 @@ export const JoinLink = styled.div`
 	}
 `;
 
-const ChooseOffers = () => {
+const ChooseOffers = ({ preference, trainer }) => {
+	const [data, setData] = useState();
+	const user = useSelector((state) => state.Trainee.currentUser);
+	const [errors, setErrors] = useState([]);
+	const [open, setOpen] = useState(false);
+	const handleClose = () => setOpen(false);
+	const today = new Date();
+
+	async function fetchData() {
+		try {
+			const response = await axios.get(
+				`${BASE_URL}/Trainer/find/${trainer}`
+			);
+
+			setData(response?.data);
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	useEffect(() => {
+		fetchData();
+	}, [trainer]);
+
+	const payment = async (time, endDate) => {
+		const errors = [];
+		if (!preference) {
+			errors.push(" Choose training preference");
+		}
+		if (!trainer) {
+			errors.push(" Choose Trainer");
+		}
+		if (errors.length > 0) {
+			setErrors(errors);
+			setOpen(true);
+		}
+		if (errors.length === 0) {
+			await axios
+				.post(`${BASE_URL}/Payment`, {
+					traineeId: user._id,
+					datePaid: today,
+					time: time,
+					endingDate: endDate,
+				})
+				.then((res) => {
+					if (res.status === 200 || res.status === 201) {
+						toast.success("Created Account successfully");
+						subscribe();
+					}
+				})
+				.catch((error) => {
+					toast.error("failed");
+				});
+		}
+	};
+
+	const subscribe = async () => {
+		const current = data?.trainee || [];
+		current.push({ traineeId: user._id, name: user.name });
+		await axios
+			.put(`${BASE_URL}/Trainer/${trainer}`, {
+				trainee: current,
+			})
+			.then((res) => {
+				if (res.status === 200 || res.status === 201) {
+					toast.success("Subscribed");
+				}
+			})
+			.catch((error) => {
+				toast.error("Failed, try again");
+			});
+	};
+
+	function addMonths(date, months) {
+		const newDate = new Date(date);
+		const currentMonth = newDate.getMonth();
+		newDate.setMonth(currentMonth + months);
+
+		return newDate;
+	}
+
 	return (
 		<div style={{ marginTop: "5%" }}>
 			<div
@@ -65,7 +150,7 @@ const ChooseOffers = () => {
 						borderRadius: "10px",
 						padding: "10px",
 						position: "relative",
-						backgroundColor: "#FEFBF4",
+						backgroundColor: "#FFFFFF",
 						border: "1px solid #FFE3BB",
 					}}
 				>
@@ -161,6 +246,9 @@ const ChooseOffers = () => {
 								backgroundColor: "#42B5A6",
 								border: "1px solid #FFFFFF",
 							}}
+							onClick={() =>
+								payment("1month", addMonths(today, 1))
+							}
 						>
 							JOIN NOW
 						</JoinLink>
@@ -175,7 +263,7 @@ const ChooseOffers = () => {
 						borderRadius: "10px",
 						padding: "10px",
 						position: "relative",
-						backgroundColor: "#FEFBF4",
+						backgroundColor: "#FFFFFF",
 						border: "1px solid #FFE3BB",
 					}}
 				>
@@ -285,7 +373,7 @@ const ChooseOffers = () => {
 						borderRadius: "10px",
 						padding: "10px",
 						position: "relative",
-						backgroundColor: "#FEFBF4",
+						backgroundColor: "#FFFFFF",
 						border: "1px solid #FFE3BB",
 					}}
 				>

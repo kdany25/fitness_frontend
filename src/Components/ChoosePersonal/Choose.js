@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Choose = () => {
+const Choose = ({ setPreferences }) => {
+	const [preferenceIndex, setPreferenceIndex] = useState();
 	return (
 		<div style={{ marginTop: "5%" }}>
 			<div
@@ -11,13 +12,13 @@ const Choose = () => {
 					color: "#4d4b4b",
 				}}
 			>
-				Training {""}
+				Choose Training {""}
 				<span
 					style={{
 						backgroundColor: "#007CFF",
 						padding: "10px",
 						borderRadius: "20px",
-            color:'#ffffff'
+						color: "#ffffff",
 					}}
 				>
 					Preference
@@ -35,9 +36,15 @@ const Choose = () => {
 					<div
 						style={{
 							width: "300px",
-							border: "2px solid #007CFF",
-              backgroundColor:'#F6F9FF',
+							border: `2px solid ${
+								preferenceIndex === 1 ? "#007CFF" : "#A3A5BB"
+							}`,
+							backgroundColor: "#ffffff",
 							borderRadius: "20px",
+						}}
+						onClick={() => {
+							setPreferenceIndex(1);
+							setPreferences("Personal session");
 						}}
 					>
 						<div
@@ -67,12 +74,18 @@ const Choose = () => {
 					<div
 						style={{
 							width: "300px",
-							border: "2px solid #A3A5BB",
+							border: `2px solid ${
+								preferenceIndex === 2 ? "#007CFF" : "#A3A5BB"
+							}`,
 							borderRadius: "20px",
-              backgroundColor:'#F6F9FF'
+							backgroundColor: "#ffffff",
+						}}
+						onClick={() => {
+							setPreferenceIndex(2);
+							setPreferences("Group session");
 						}}
 					>
-            <div
+						<div
 							style={{
 								display: "flex",
 								justifyContent: "center",
@@ -103,4 +116,3 @@ const Choose = () => {
 
 export default Choose;
 // https://i.ibb.co/w6c8xsK/3304470.jpg
-

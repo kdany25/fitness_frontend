@@ -114,14 +114,16 @@ const Banner = () => {
 
 				<div
 					style={{
-						width: "60%",
+						width: "70%",
 						display: "flex",
 						justifyContent: "center",
+						
 					}}
 				>
 					<img
-						src="https://i.ibb.co/yyGfg30/banner.png"
+						src="https://i.ibb.co/x3kKMdp/stylish-young-male-athlete-practicing-white-studio-background-portrait-with-shadows-sportive-fit-mod.jpg"
 						width={900}
+					
 					/>
 				</div>
 			</div>
