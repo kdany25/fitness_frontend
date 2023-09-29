@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-import { JoinLink, LoginBtn } from "./style";
+import { LoginBtn } from "./style";
 import { useDispatch } from "react-redux";
-import { login } from "../../Helpers/ApiCalls";
+import { loginTrainer } from "../../Helpers/ApiCalls";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const LoginTrainer = () => {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
 	const dispatch = useDispatch();
 
 	const handleLogin = () => {
-		login(dispatch, { email, password });
+		loginTrainer(dispatch, { email, password });
 	};
 	return (
 		<div style={{ display: "flex", height: "100vh" }}>
-			<div style={{ width: "55%", marginTop: "5%" }}>
+			<div style={{ width: "55%" }}>
 				<img
-					src="https://i.ibb.co/SsyHSrq/3582369.jpg"
+					src="https://i.ibb.co/qRbB26b/5755636.jpg"
 					style={{ width: "100%", height: "100%" }}
 				/>{" "}
 			</div>
@@ -29,39 +29,9 @@ const Login = () => {
 			>
 				<div
 					style={{
-						display: "flex",
-						marginTop: "5%",
-						justifyContent: "flex-end",
-					}}
-				>
-					<div
-						style={{
-							color: "#A3A5BB",
-							marginTop: "1.5%",
-							fontSize: "18px",
-						}}
-					>
-						Don't you have account ?
-					</div>
-					<JoinLink
-						style={{
-							color: "#9A9696",
-							backgroundColor: "#ffffff",
-							border: "2px solid #DDD3D3",
-							fontWeight: "Bold",
-							marginLeft: "1%",
-						}}
-						to="/signUp"
-					>
-						SIGN UP
-					</JoinLink>
-				</div>
-
-				<div
-					style={{
 						fontSize: "35px",
 						fontWeight: "Bold",
-						marginTop: "5%",
+						marginTop: "20%",
 						marginLeft: "5%",
 					}}
 				>
@@ -133,7 +103,7 @@ const Login = () => {
 						Login
 					</LoginBtn>
 				</div>
-				<Link to="/loginTrainer">
+				<Link to="/login">
 					<div
 						style={{
 							color: "#A3A5BB",
@@ -142,7 +112,7 @@ const Login = () => {
 							marginLeft: "5%",
 						}}
 					>
-						Login As Trainer
+						Login As Trainee
 					</div>
 				</Link>
 			</div>
@@ -150,5 +120,5 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default LoginTrainer;
 // 007CFF

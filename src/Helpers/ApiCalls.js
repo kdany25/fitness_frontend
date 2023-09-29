@@ -7,9 +7,18 @@ import {
 	logOutFailure,
 } from "../slices/TraineeAuthSlice";
 
+import {
+	loginTrainerFailure,
+	loginTrainerStart,
+	loginTrainerSuccess,
+	logOutTrainerStart,
+	logOutTrainerSuccess,
+	logOutTrainerFailure,
+} from "../slices/TrainerAuthSlice";
+
 import { apiRequest } from "./requestMethod";
 
-//User login
+//trainee login
 export const login = async (dispatch, user) => {
 	dispatch(loginStart());
 	try {
@@ -20,12 +29,33 @@ export const login = async (dispatch, user) => {
 	}
 };
 
-//logout
+//logout trainee
 export const logOutUser = async (id, dispatch) => {
 	dispatch(logOutStart());
 	try {
 		dispatch(logOutSuccess("user logout "));
 	} catch (err) {
 		dispatch(logOutFailure());
+	}
+};
+
+//User login
+export const loginTrainer = async (dispatch, user) => {
+	dispatch(loginTrainerStart());
+	try {
+		const res = await apiRequest.post("TrainerAuth/login", user);
+		dispatch(loginTrainerSuccess(res.data));
+	} catch (err) {
+		dispatch(loginTrainerFailure());
+	}
+};
+
+//logout
+export const logOutUserTrainer = async (id, dispatch) => {
+	dispatch(logOutTrainerStart());
+	try {
+		dispatch(logOutTrainerSuccess("user logout "));
+	} catch (err) {
+		dispatch(logOutTrainerFailure());
 	}
 };

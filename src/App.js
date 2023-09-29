@@ -5,6 +5,7 @@ import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUP";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
+import LoginTrainer from "./Pages/LoginTrainer/LoginTrainer";
 
 function App() {
 	return (
@@ -17,6 +18,7 @@ function App() {
 					<Route path="/signUp" element={<SignUp />} />
 
 					<Route exact path="/login" element={<Login />} />
+					<Route exact path="/loginTrainer" element={<LoginTrainer />} />
 				</Routes>
 			</Fragment>
 		</Router>
