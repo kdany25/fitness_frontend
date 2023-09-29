@@ -57,7 +57,7 @@ const ChooseOffers = ({ preference, trainer }) => {
 		fetchData();
 	}, [trainer]);
 
-	const payment = async (time, endDate) => {
+	const payment = async (packages, endDate) => {
 		const errors = [];
 		if (!preference) {
 			errors.push(" Choose training preference");
@@ -74,13 +74,13 @@ const ChooseOffers = ({ preference, trainer }) => {
 				.post(`${BASE_URL}/Payment`, {
 					traineeId: user._id,
 					datePaid: today,
-					time: time,
+					package: packages,
 					endingDate: endDate,
 				})
 				.then((res) => {
 					if (res.status === 200 || res.status === 201) {
 						toast.success("Created Account successfully");
-						subscribe();
+						subscribe(packages, endDate);
 					}
 				})
 				.catch((error) => {
@@ -89,9 +89,15 @@ const ChooseOffers = ({ preference, trainer }) => {
 		}
 	};
 
-	const subscribe = async () => {
+	const subscribe = async (packages, endingDate) => {
 		const current = data?.trainee || [];
-		current.push({ traineeId: user._id, name: user.name });
+		current.push({
+			traineeId: user._id,
+			name: user.name,
+			phone: user.phone,
+			package: packages,
+			endingDate: endingDate,
+		});
 		await axios
 			.put(`${BASE_URL}/Trainer/${trainer}`, {
 				trainee: current,
@@ -247,7 +253,7 @@ const ChooseOffers = ({ preference, trainer }) => {
 								border: "1px solid #FFFFFF",
 							}}
 							onClick={() =>
-								payment("1month", addMonths(today, 1))
+								payment("Bronze", addMonths(today, 1))
 							}
 						>
 							JOIN NOW
@@ -359,6 +365,9 @@ const ChooseOffers = ({ preference, trainer }) => {
 								backgroundColor: "#42B5A6",
 								border: "1px solid #FFFFFF",
 							}}
+							onClick={() =>
+								payment("Silver", addMonths(today, 2))
+							}
 						>
 							JOIN NOW
 						</JoinLink>
@@ -469,6 +478,7 @@ const ChooseOffers = ({ preference, trainer }) => {
 								backgroundColor: "#42B5A6",
 								border: "1px solid #FFFFFF",
 							}}
+							onClick={() => payment("Gold", addMonths(today, 3))}
 						>
 							JOIN NOW
 						</JoinLink>
