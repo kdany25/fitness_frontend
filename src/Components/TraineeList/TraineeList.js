@@ -160,7 +160,7 @@ const TraineeList = () => {
 			),
 		},
 	];
-	console.log(trainer.trainee);
+
 	return (
 		<div style={{ marginRight: "2%", marginTop: "2%" }}>
 			<div
@@ -175,7 +175,7 @@ const TraineeList = () => {
 
 			<DataTable
 				columns={columns}
-				data={trainer.trainee || []}
+				data={trainer?.trainee || []}
 			></DataTable>
 		</div>
 	);

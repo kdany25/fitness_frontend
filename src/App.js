@@ -52,7 +52,7 @@ function App() {
 						<Route path="/" element={<Home />} />
 					</Routes>
 				)}
-				{manager && (
+				{manager && !trainee && !trainer && (
 					<div className="wholecontainer">
 						<SideBarManager />
 						<Routes>
