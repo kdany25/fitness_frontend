@@ -1,8 +1,10 @@
 import React from "react";
+import TrainerNavBar from "../../Components/TrainerNavBar/TrainerNavBar";
+import TraineeList from "../../Components/TraineeList/TraineeList";
 import ManagerNavBar from "../../Components/ManagerNavBar/ManagerNavBar";
-import TrainerList from "../../Components/TrainerList/TrainerList";
+import Payment from "../../Components/Payment/Payment";
 
-const HomeManager = () => {
+const PaymentList = () => {
 	return (
 		<div style={{ width: "100%" }}>
 			<div style={{ marginLeft: "2%" }}>
@@ -15,10 +17,10 @@ const HomeManager = () => {
 				}}
 			/>
 			<div style={{ marginLeft: "2%" }}>
-				<TrainerList />
+				<Payment />
 			</div>
 		</div>
 	);
 };
 
-export default HomeManager;
+export default PaymentList;

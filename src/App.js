@@ -12,6 +12,9 @@ import HomeTrainer from "./Pages/HomeTrainer.js/HomeTrainer";
 import SideBarManager from "./Components/SidebarManager/SideBarManager";
 import HomeManager from "./Pages/HomeManager/HomeManager";
 import LoginManager from "./Pages/LoginManager/LoginManager";
+import AddTrainer from "./Pages/AddTrainer/AddTrainer";
+import AddManager from "./Pages/AddManager/AddManager";
+import PaymentList from "./Pages/Payment/PaymentList";
 
 function App() {
 	const trainee = useSelector((state) => state.Trainee?.currentUser);
@@ -52,11 +55,20 @@ function App() {
 						<Route path="/" element={<Home />} />
 					</Routes>
 				)}
-				{manager && (
+				{manager && !trainee && !trainer && (
 					<div className="wholecontainer">
 						<SideBarManager />
 						<Routes>
 							<Route path="/" element={<HomeManager />} />
+							<Route
+								path="/addTrainer"
+								element={<AddTrainer />}
+							/>
+							<Route
+								path="/addManager"
+								element={<AddManager />}
+							/>
+							<Route path="/payment" element={<PaymentList />} />
 						</Routes>
 					</div>
 				)}

@@ -1,8 +1,8 @@
 import React from "react";
 import ManagerNavBar from "../../Components/ManagerNavBar/ManagerNavBar";
-import TrainerList from "../../Components/TrainerList/TrainerList";
+import NewTrainer from "../../Components/NewTrainer/NewTrainer";
 
-const HomeManager = () => {
+const AddTrainer = () => {
 	return (
 		<div style={{ width: "100%" }}>
 			<div style={{ marginLeft: "2%" }}>
@@ -15,10 +15,10 @@ const HomeManager = () => {
 				}}
 			/>
 			<div style={{ marginLeft: "2%" }}>
-				<TrainerList />
+				<NewTrainer />
 			</div>
 		</div>
 	);
 };
 
-export default HomeManager;
+export default AddTrainer;

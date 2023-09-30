@@ -18,15 +18,13 @@ export const MenuHolder = styled.div`
 export const MenuList = styled.ul`
 	list-style-type: none;
 	padding: 0;
-	border: 2px solid #2245e4;
-	background-color: #eaeefa;
-	border-radius: 10px;
+  border-radius: 10px;
 `;
 
 export const HrefLinks = styled.a`
 	display: flex;
 	alignitems: center;
-	color: #2245e4;
+	color: #8a8998;
 	text-decoration: none;
 	font-weight: bold;
 `;

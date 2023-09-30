@@ -38,7 +38,6 @@ const SignUp = () => {
 		// Define a regular expression pattern that matches the conditions
 		const passwordPattern =
 			/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
-		console.log("here");
 		// Test the password against the pattern
 		return passwordPattern.test(password);
 	}

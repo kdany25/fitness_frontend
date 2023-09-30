@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-const TrainerNavBar = () => {
-	const trainer = useSelector((state) => state?.Trainer?.currentUser);
+const ManagerNavBar = () => {
+	const manager = useSelector((state) => state?.Manager?.currentUser);
 	return (
 		<div
 			style={{
@@ -12,7 +12,7 @@ const TrainerNavBar = () => {
 			}}
 		>
 			<div style={{ fontSize: "24px", fontWeight: "bold", width: "30%" }}>
-				Welcome {trainer?.name} 👋🏽
+				Welcome {manager?.name} 👋🏽
 			</div>
 			<div style={{ marginRight: "2%" }}>
 				<img
@@ -26,4 +26,4 @@ const TrainerNavBar = () => {
 	);
 };
 
-export default TrainerNavBar;
+export default ManagerNavBar;

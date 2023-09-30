@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import {
@@ -7,20 +7,21 @@ import {
 	MenuList,
 	HrefLinks,
 	linkItems,
-	Logo,
-	LogIcon,
 } from "./SideBarStyles";
 import Image from "../../assets/burberr.png";
 import { AiOutlineLogout } from "react-icons/ai";
-import { logOutUserTrainer } from "../../Helpers/ApiCalls";
+import { logOutManager } from "../../Helpers/ApiCalls";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { GiMoneyStack } from "react-icons/gi";
+import { AiOutlineUserAdd } from "react-icons/ai";
+import { FaUserAlt } from "react-icons/fa";
 
 function SideBarManager() {
-	const states = useSelector((state) => state.Trainer);
+	const states = useSelector((state) => state.Manager);
 	const dispatch = useDispatch();
 	const handleClick = (e) => {
-		logOutUserTrainer(states, dispatch);
+		logOutManager(states, dispatch);
 	};
 	return (
 		<SideBarContainer style={{ width: "250px" }}>
@@ -30,14 +31,65 @@ function SideBarManager() {
 				<MenuList>
 					<Link to="/" className="link">
 						<li style={linkItems}>
-							<HrefLinks>
-								<FaHome />
+							<HrefLinks
+								style={{
+									border: "2px solid #2245e4",
+									padding: "20px",
+									borderRadius: "10px",
+									backgroundColor: "#eaeefa",
+									color: "#2245e4",
+								}}
+							>
+								<FaUserAlt color="#2245e4" />
 								<span
 									style={{
 										marginLeft: "8px",
 									}}
 								>
-									Home
+									Trainers
+								</span>
+							</HrefLinks>
+						</li>
+					</Link>
+
+					<Link to="/addTrainer" className="link">
+						<li style={linkItems}>
+							<HrefLinks>
+								<AiOutlineUserAdd />
+								<span
+									style={{
+										marginLeft: "8px",
+									}}
+								>
+									Add trainer
+								</span>
+							</HrefLinks>
+						</li>
+					</Link>
+					<Link to="/addManager" className="link">
+						<li style={linkItems}>
+							<HrefLinks>
+								<AiOutlineUserAdd />
+								<span
+									style={{
+										marginLeft: "8px",
+									}}
+								>
+									Add Manager
+								</span>
+							</HrefLinks>
+						</li>
+					</Link>
+					<Link to="/payment" className="link">
+						<li style={linkItems}>
+							<HrefLinks>
+								<GiMoneyStack />
+								<span
+									style={{
+										marginLeft: "8px",
+									}}
+								>
+									Payment
 								</span>
 							</HrefLinks>
 						</li>
@@ -51,7 +103,7 @@ function SideBarManager() {
 				}}
 			/>
 
-			<div style={{ marginTop: "63vh" }} onClick={() => handleClick()}>
+			<div style={{ marginTop: "38vh" }} onClick={() => handleClick()}>
 				<div
 					style={{
 						display: "flex",
@@ -59,7 +111,6 @@ function SideBarManager() {
 						backgroundColor: "#2245e4",
 						padding: "20px",
 					}}
-					
 				>
 					<AiOutlineLogout
 						color="white"
@@ -79,4 +130,3 @@ function SideBarManager() {
 }
 
 export default SideBarManager;
-
