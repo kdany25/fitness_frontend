@@ -9,23 +9,32 @@ import LoginTrainer from "./Pages/LoginTrainer/LoginTrainer";
 import { useSelector } from "react-redux";
 import SideBar from "./Components/SideBar/SideBar";
 import HomeTrainer from "./Pages/HomeTrainer.js/HomeTrainer";
+import SideBarManager from "./Components/SidebarManager/SideBarManager";
+import HomeManager from "./Pages/HomeManager/HomeManager";
+import LoginManager from "./Pages/LoginManager/LoginManager";
 
 function App() {
 	const trainee = useSelector((state) => state.Trainee?.currentUser);
 	const trainer = useSelector((state) => state?.Trainer?.currentUser);
+	const manager = useSelector((state) => state?.Manager?.currentUser);
 
 	return (
 		<Router>
 			<Fragment>
-				{!trainee && !trainer && (
+				{!trainee && !trainer && !manager && (
 					<Routes>
 						<Route path="/" element={<LandingPage />} />
 						<Route path="/signUp" element={<SignUp />} />
-						<Route exact path="/login" element={<Login />} />{" "}
+						<Route exact path="/login" element={<Login />} />
 						<Route
 							exact
 							path="/loginTrainer"
 							element={<LoginTrainer />}
+						/>
+						<Route
+							exact
+							path="/loginManager"
+							element={<LoginManager />}
 						/>
 					</Routes>
 				)}
@@ -42,6 +51,14 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Home />} />
 					</Routes>
+				)}
+				{manager && (
+					<div className="wholecontainer">
+						<SideBarManager />
+						<Routes>
+							<Route path="/" element={<HomeManager />} />
+						</Routes>
+					</div>
 				)}
 			</Fragment>
 		</Router>
