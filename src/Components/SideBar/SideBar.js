@@ -7,8 +7,6 @@ import {
 	MenuList,
 	HrefLinks,
 	linkItems,
-	Logo,
-	LogIcon,
 } from "./SideBarStyles";
 import Image from "../../assets/burberr.png";
 import { AiOutlineLogout } from "react-icons/ai";
@@ -59,7 +57,6 @@ function SideBar() {
 						backgroundColor: "#2245e4",
 						padding: "20px",
 					}}
-					
 				>
 					<AiOutlineLogout
 						color="white"

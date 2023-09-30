@@ -3,13 +3,13 @@ import DataTable from "react-data-table-component";
 import axios from "axios";
 import { BASE_URL } from "../../Helpers/requestMethod";
 
-const TrainerList = () => {
+const Payment = () => {
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				const response = await axios.get(`${BASE_URL}/Trainer`);
+				const response = await axios.get(`${BASE_URL}/Payment`);
 				setData(response?.data);
 			} catch (error) {
 				console.error(error);
@@ -33,7 +33,7 @@ const TrainerList = () => {
 				>
 					<div>
 						<img
-							src="https://i.ibb.co/X4mtGMX/6334178.jpg"
+							src="https://i.ibb.co/T0KvGhJ/5989813.jpg"
 							width={60}
 							height={60}
 							style={{ borderRadius: "50%" }}
@@ -47,19 +47,19 @@ const TrainerList = () => {
 								color: "001E00",
 							}}
 						>
-							{row.name}
+							{row.traineeId}
 						</div>
-						<div style={{ color: "#A3A5BB", marginTop: "5%" }}>
+						{/* <div style={{ color: "#A3A5BB", marginTop: "5%" }}>
 							{" "}
 							{row.phone}
-						</div>
+						</div> */}
 					</div>
 				</div>
 			),
 		},
 
 		{
-			name: "Email",
+			name: "Package",
 			cell: (row) => (
 				<div style={{ width: "70%" }}>
 					<div
@@ -76,31 +76,34 @@ const TrainerList = () => {
 								fontWeight: "bold",
 							}}
 						>
-							{row.email}
+							{row.package}
 						</div>
 					</div>
 				</div>
 			),
 		},
 		{
-			name: "Schedule",
+			name: "Days remaining",
 			cell: (row) => (
 				<div style={{ width: "70%" }}>
 					<div
 						style={{
 							borderRadius: "10px",
 							textAlign: "center",
-							backgroundColor: "#D9F3EA",
+							backgroundColor: "#E3FCFF",
 						}}
 					>
 						<div
 							style={{
 								padding: "10%",
-								color: "#67C7A3",
+								color: "#00E0FF",
 								fontWeight: "bold",
 							}}
 						>
-							{row.schedule}
+							{Math.floor(
+								(new Date(row.endingDate) - new Date()) /
+									(1000 * 3600 * 24)
+							)}
 						</div>
 					</div>
 				</div>
@@ -117,7 +120,7 @@ const TrainerList = () => {
 					color: "#383838",
 				}}
 			>
-				Trainers
+				Payment
 			</div>
 
 			<DataTable columns={columns} data={data || []}></DataTable>
@@ -125,4 +128,4 @@ const TrainerList = () => {
 	);
 };
 
-export default TrainerList;
+export default Payment;
