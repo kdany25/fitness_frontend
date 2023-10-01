@@ -5,8 +5,7 @@ import { useSelector } from "react-redux";
 import { logOutUser } from "../../Helpers/ApiCalls";
 import { useDispatch } from "react-redux";
 
-const HomeNavBar = () => {
-	const [data, setData] = useState([]);
+const HomeNavBar = ({data}) => {
 	const trainee = useSelector((state) => state.Trainee?.currentUser);
 	const today = new Date();
 	const states = useSelector((state) => state.Trainee);
@@ -15,14 +14,6 @@ const HomeNavBar = () => {
 		logOutUser(states, dispatch);
 	};
 
-	useEffect(() => {
-		fetch(`${BASE_URL}/Payment/trainee/${trainee._id}`)
-			.then((response) => response.json())
-			.then((data) => {
-				setData(data);
-			})
-			.catch((error) => console.error("Error fetching data:", error));
-	}, [trainee?._id]);
 
 	return (
 		<div>
@@ -50,7 +41,13 @@ const HomeNavBar = () => {
 				{data[0] && (
 					<div style={{ display: "flex" }}>
 						<NavBtn>
-							<NavBtnLink to="/login">
+							<NavBtnLink
+								style={{
+									backgroundColor: "black",
+									fontWeight: "bold",
+								}}
+							
+							>
 								{" "}
 								{Math.floor(
 									(new Date(data[0]?.endingDate) - today) /
@@ -61,9 +58,14 @@ const HomeNavBar = () => {
 						</NavBtn>
 					</div>
 				)}
+
 				<div style={{ display: "flex" }}>
 					<NavBtn>
 						<NavBtnLink
+							style={{
+								backgroundColor: "black",
+								fontWeight: "bold",
+							}}
 							to="/"
 							onClick={() => handleClick()}
 						>

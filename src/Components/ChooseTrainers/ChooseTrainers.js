@@ -5,6 +5,7 @@ import { BASE_URL } from "../../Helpers/requestMethod";
 const ChooseTrainers = ({ setTrainer }) => {
 	const [trainerIndex, setTrainerIndex] = useState();
 	const [data, setData] = useState([]);
+	const [isHovered, setIsHovered] = useState(false);
 
 	useEffect(() => {
 		async function fetchData() {
@@ -19,10 +20,12 @@ const ChooseTrainers = ({ setTrainer }) => {
 		fetchData();
 	}, []);
 	const pic = [
-		"https://i.ibb.co/7zB46ZT/Screen-Shot-2023-09-26-at-20-07-29.png",
-		"https://i.ibb.co/FqLp9b9/Screen-Shot-2023-09-26-at-19-55-06.png",
-		"https://i.ibb.co/b7Fj8Cq/Screen-Shot-2023-09-26-at-19-52-18.png",
+		"https://i.ibb.co/k98d3b8/p1.jpg",
+		"https://i.ibb.co/M5XqKRt/shirtless-bodybuilder-holding-dumbbell-shoulder.jpg",
+		"https://i.ibb.co/dK0x6Ly/Screen-Shot-2023-10-01-at-11-19-47.png",
+		"https://i.ibb.co/0QMV5ZT/p3.jpg",
 	];
+
 	return (
 		<div style={{ marginTop: "5%" }}>
 			<div
@@ -36,7 +39,7 @@ const ChooseTrainers = ({ setTrainer }) => {
 				Choose{" "}
 				<span
 					style={{
-						backgroundColor: "#007CFF",
+						backgroundColor: "#000000",
 						padding: "10px",
 						borderRadius: "20px",
 						color: "#ffffff",
@@ -45,9 +48,11 @@ const ChooseTrainers = ({ setTrainer }) => {
 					Trainer
 				</span>
 			</div>
+
 			<div
 				style={{
 					display: "flex",
+					flexWrap: "wrap",
 					justifyContent: "space-between",
 					marginTop: "3%",
 				}}
@@ -55,17 +60,23 @@ const ChooseTrainers = ({ setTrainer }) => {
 				{data.map((element, index) => (
 					<div
 						style={{
-							width: "400px",
 							borderRadius: "10px",
-							border: `2px solid ${
-								trainerIndex === index ? "#007CFF" : "#EBE9E6"
+							border: `1px solid ${
+								trainerIndex === index ? "#000000" : "#ffffff"
 							}`,
 							backgroundColor: "#FFFFFF",
+							width: "23.5%",
+							boxShadow: "0px 0px 10px 0px #d4d4d4",
+							transition: "transform 0.3s ease",
+							transform:
+								isHovered === index ? "scale(1.1)" : "scale(1)",
 						}}
 						onClick={() => {
 							setTrainerIndex(index);
 							setTrainer(element._id);
 						}}
+						onMouseEnter={() => setIsHovered(index)}
+						onMouseLeave={() => setIsHovered(null)}
 					>
 						<div
 							style={{
@@ -93,10 +104,23 @@ const ChooseTrainers = ({ setTrainer }) => {
 						</div>
 						<div
 							style={{
+								fontSize: "18px",
+								textAlign: "center",
+								marginTop: "1%",
+							}}
+						>
+							{element.aka}
+						</div>
+						<div style={{ padding: "10px", color: "#727272" }}>
+							<em>"{element.description}"</em>
+						</div>
+						<div
+							style={{
 								padding: "10px",
 								color: "#727272",
-								fontSize: "20px",
+								fontSize: "16px",
 								textAlign: "center",
+								fontWeight: "Bold",
 							}}
 						>
 							{element.schedule}

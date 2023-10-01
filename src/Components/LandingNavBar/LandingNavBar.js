@@ -52,6 +52,14 @@ const LandingNavBar = () => {
 								cursor: "pointer",
 							}}
 						>
+							Services
+						</li>
+						<li
+							style={{
+								padding: "15px",
+								cursor: "pointer",
+							}}
+						>
 							Trainers
 						</li>
 						<li
@@ -60,15 +68,7 @@ const LandingNavBar = () => {
 								cursor: "pointer",
 							}}
 						>
-							Offers
-						</li>
-						<li
-							style={{
-								padding: "15px",
-								cursor: "pointer",
-							}}
-						>
-							Contact
+							Offer
 						</li>
 					</ul>
 

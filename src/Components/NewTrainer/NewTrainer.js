@@ -123,95 +123,145 @@ const NewTrainer = () => {
 			<ToastContainer />
 			<div>
 				<div style={{ fontWeight: "bold" }}>Add new Trainer</div>
+				<div style={{ display: "flex" }}>
+					<div style={{ marginTop: "1%", width: "50%" }}>
+						<div style={{ fontSize: "15px", fontWeight: "normal" }}>
+							Name
+						</div>
 
-				<div style={{ marginTop: "2%" }}>
-					<div style={{ fontSize: "15px", fontWeight: "normal" }}>
-						Name
+						<div style={{ marginTop: "1%" }}>
+							<input
+								placeholder="Type Name"
+								style={{
+									padding: "20px",
+									width: "60%",
+									borderRadius: "10px",
+									border: "1px solid #A3A5BB",
+									fontSize: "16px",
+									color: "#A3A5BB",
+								}}
+								onChange={(e, v) =>
+									handleChange("name", e.target.value)
+								}
+							/>
+						</div>
 					</div>
+					<div style={{ marginTop: "1%", width: "50%" }}>
+						<div style={{ fontSize: "15px", fontWeight: "normal" }}>
+							Email
+						</div>
 
-					<div style={{ marginTop: "1%" }}>
-						<input
-							placeholder="Type Name"
-							style={{
-								padding: "20px",
-								width: "30%",
-								borderRadius: "10px",
-								border: "1px solid #A3A5BB",
-								fontSize: "16px",
-								color: "#A3A5BB",
-							}}
-							onChange={(e, v) =>
-								handleChange("name", e.target.value)
-							}
-						/>
+						<div style={{ marginTop: "1%" }}>
+							<input
+								placeholder="Type Email"
+								style={{
+									padding: "20px",
+									width: "60%",
+									borderRadius: "10px",
+									border: "1px solid #A3A5BB",
+									fontSize: "16px",
+									color: "#A3A5BB",
+								}}
+								onChange={(e, v) =>
+									handleChange("email", e.target.value)
+								}
+							/>
+						</div>
 					</div>
 				</div>
-				<div style={{ marginTop: "1%" }}>
-					<div style={{ fontSize: "15px", fontWeight: "normal" }}>
-						Email
-					</div>
+				<div style={{ display: "flex", width: "100%" }}>
+					<div style={{ marginTop: "1%", width: "50%" }}>
+						<div style={{ fontSize: "15px", fontWeight: "normal" }}>
+							Description
+						</div>
 
-					<div style={{ marginTop: "1%" }}>
-						<input
-							placeholder="Type Email"
-							style={{
-								padding: "20px",
-								width: "30%",
-								borderRadius: "10px",
-								border: "1px solid #A3A5BB",
-								fontSize: "16px",
-								color: "#A3A5BB",
-							}}
-							onChange={(e, v) =>
-								handleChange("email", e.target.value)
-							}
-						/>
+						<div style={{ marginTop: "1%" }}>
+							<input
+								placeholder="Type description"
+								style={{
+									padding: "20px",
+									width: "60%",
+									borderRadius: "10px",
+									border: "1px solid #A3A5BB",
+									fontSize: "16px",
+									color: "#A3A5BB",
+								}}
+								onChange={(e, v) =>
+									handleChange("description", e.target.value)
+								}
+							/>
+						</div>
+					</div>
+					<div style={{ marginTop: "1%", width: "50%" }}>
+						<div style={{ fontSize: "15px", fontWeight: "normal" }}>
+							Aka
+						</div>
+
+						<div style={{ marginTop: "1%" }}>
+							<input
+								placeholder="Type Aka"
+								style={{
+									padding: "20px",
+									width: "60%",
+									borderRadius: "10px",
+									border: "1px solid #A3A5BB",
+									fontSize: "16px",
+									color: "#A3A5BB",
+								}}
+								onChange={(e, v) =>
+									handleChange("aka", e.target.value)
+								}
+							/>
+						</div>
 					</div>
 				</div>
-				<div style={{ marginTop: "1%" }}>
-					<div style={{ fontSize: "15px", fontWeight: "normal" }}>
-						Phone
-					</div>
+				<div style={{ display: "flex", width: "100%" }}>
+					<div style={{ marginTop: "1%", width: "50%" }}>
+						<div style={{ fontSize: "15px", fontWeight: "normal" }}>
+							Phone
+						</div>
 
-					<div style={{ marginTop: "1%" }}>
-						<input
-							placeholder="Type Phone"
-							style={{
-								padding: "20px",
-								width: "30%",
-								borderRadius: "10px",
-								border: "1px solid #A3A5BB",
-								fontSize: "16px",
-								color: "#A3A5BB",
-							}}
-							onChange={(e, v) =>
-								handleChange("phone", e.target.value)
-							}
-						/>
+						<div style={{ marginTop: "1%" }}>
+							<input
+								placeholder="Type Phone"
+								style={{
+									padding: "20px",
+									width: "60%",
+									borderRadius: "10px",
+									border: "1px solid #A3A5BB",
+									fontSize: "16px",
+									color: "#A3A5BB",
+								}}
+								onChange={(e, v) =>
+									handleChange("phone", e.target.value)
+								}
+							/>
+						</div>
+					</div>
+					<div style={{ marginTop: "1%", width: "50%" }}>
+						<div style={{ fontSize: "15px", fontWeight: "normal" }}>
+							Schedule
+						</div>
+
+						<div style={{ marginTop: "1%" }}>
+							<input
+								placeholder="Type Schedule"
+								style={{
+									padding: "20px",
+									width: "60%",
+									borderRadius: "10px",
+									border: "1px solid #A3A5BB",
+									fontSize: "16px",
+									color: "#A3A5BB",
+								}}
+								onChange={(e, v) =>
+									handleChange("schedule", e.target.value)
+								}
+							/>
+						</div>
 					</div>
 				</div>
-				<div style={{ marginTop: "1%" }}>
-					<div style={{ fontSize: "15px", fontWeight: "normal" }}>
-						Schedule
-					</div>
 
-					<div style={{ marginTop: "1%" }}>
-						<input
-							placeholder="Type Schedule"
-							style={{
-								padding: "20px",
-								width: "30%",
-								borderRadius: "10px",
-								border: "1px solid #A3A5BB",
-								fontSize: "16px",
-								color: "#A3A5BB",
-							}}
-							onChange={(e, v) =>
-								handleChange("schedule", e.target.value)
-							}
-						/>
-					</div>
-				</div>
 				<div style={{ marginTop: "1%" }}>
 					<div style={{ fontSize: "15px", fontWeight: "normal" }}>
 						Password

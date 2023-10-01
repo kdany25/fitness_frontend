@@ -16,7 +16,7 @@ const ManagerNavBar = () => {
 			</div>
 			<div style={{ marginRight: "2%" }}>
 				<img
-					src="https://i.ibb.co/b7Fj8Cq/Screen-Shot-2023-09-26-at-19-52-18.png"
+					src="https://i.ibb.co/v1nvvZm/2953998.jpg"
 					width={50}
 					height={50}
 					style={{ borderRadius: "50%" }}

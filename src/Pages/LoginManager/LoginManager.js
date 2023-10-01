@@ -3,14 +3,19 @@ import { LoginBtn } from "./style";
 import { useDispatch } from "react-redux";
 import { loginManager } from "../../Helpers/ApiCalls";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LoginManager = () => {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
-	const handleLogin = () => {
-		loginManager(dispatch, { email, password });
+	const handleLogin = async () => {
+		const response = await loginManager(dispatch, { email, password });
+		if (response === "Logged In") {
+			navigate("/");
+		}
 	};
 	return (
 		<div style={{ display: "flex", height: "100vh" }}>
@@ -113,6 +118,18 @@ const LoginManager = () => {
 						}}
 					>
 						Login As Trainee
+					</div>
+				</Link>
+				<Link to="/loginTrainer">
+					<div
+						style={{
+							color: "#A3A5BB",
+							marginTop: "1%",
+							fontSize: "18px",
+							marginLeft: "5%",
+						}}
+					>
+						Login As Traineer
 					</div>
 				</Link>
 			</div>

@@ -15,7 +15,6 @@ const Payment = () => {
 				console.error(error);
 			}
 		}
-
 		fetchData();
 	}, []);
 
@@ -47,12 +46,12 @@ const Payment = () => {
 								color: "001E00",
 							}}
 						>
-							{row.traineeId}
+							{row.name}
 						</div>
-						{/* <div style={{ color: "#A3A5BB", marginTop: "5%" }}>
+						<div style={{ color: "#A3A5BB", marginTop: "5%" }}>
 							{" "}
-							{row.phone}
-						</div> */}
+							{row._id}
+						</div>
 					</div>
 				</div>
 			),

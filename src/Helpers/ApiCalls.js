@@ -33,6 +33,7 @@ export const login = async (dispatch, user) => {
 	try {
 		const res = await apiRequest.post("TraineeAuth/login", user);
 		dispatch(loginSuccess(res.data));
+		return "Logged In";
 	} catch (err) {
 		dispatch(loginFailure());
 	}
@@ -54,6 +55,7 @@ export const loginTrainer = async (dispatch, user) => {
 	try {
 		const res = await apiRequest.post("TrainerAuth/login", user);
 		dispatch(loginTrainerSuccess(res.data));
+		return "Logged In";
 	} catch (err) {
 		dispatch(loginTrainerFailure());
 	}
@@ -75,6 +77,7 @@ export const loginManager = async (dispatch, user) => {
 	try {
 		const res = await apiRequest.post("Manager/login", user);
 		dispatch(loginManagerSuccess(res.data));
+		return "Logged In";
 	} catch (err) {
 		dispatch(loginManagerFailure());
 	}

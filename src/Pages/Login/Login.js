@@ -3,15 +3,22 @@ import { JoinLink, LoginBtn } from "./style";
 import { useDispatch } from "react-redux";
 import { login } from "../../Helpers/ApiCalls";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
-	const handleLogin = () => {
-		login(dispatch, { email, password });
+	const handleLogin = async () => {
+		const response = await login(dispatch, { email, password });
+		if (response === "Logged In") {
+			navigate("/");
+		}
 	};
+
 	return (
 		<div style={{ display: "flex", height: "100vh" }}>
 			<div style={{ width: "55%", marginTop: "5%" }}>
@@ -143,6 +150,18 @@ const Login = () => {
 						}}
 					>
 						Login As Trainer
+					</div>
+				</Link>
+				<Link to="/loginManager">
+					<div
+						style={{
+							color: "#A3A5BB",
+							marginTop: "5%",
+							fontSize: "18px",
+							marginLeft: "5%",
+						}}
+					>
+						Login as Manager
 					</div>
 				</Link>
 			</div>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 const Choose = ({ setPreferences }) => {
 	const [preferenceIndex, setPreferenceIndex] = useState();
+	const [isHovered1, setIsHovered1] = useState(false);
+	const [isHovered2, setIsHovered2] = useState(false);
 	return (
 		<div style={{ marginTop: "5%" }}>
 			<div
@@ -15,7 +17,7 @@ const Choose = ({ setPreferences }) => {
 				Choose Training {""}
 				<span
 					style={{
-						backgroundColor: "#007CFF",
+						backgroundColor: "#000000",
 						padding: "10px",
 						borderRadius: "20px",
 						color: "#ffffff",
@@ -35,17 +37,22 @@ const Choose = ({ setPreferences }) => {
 				>
 					<div
 						style={{
-							width: "300px",
-							border: `2px solid ${
-								preferenceIndex === 1 ? "#007CFF" : "#A3A5BB"
+							width: "30%",
+							border: `1px solid ${
+								preferenceIndex === 1 ? "#000000" : "#ffffff"
 							}`,
 							backgroundColor: "#ffffff",
 							borderRadius: "20px",
+							transition: "transform 0.3s ease",
+							transform: isHovered1 ? "scale(1.1)" : "scale(1)",
+							boxShadow: "0px 0px 10px 0px #d4d4d4",
 						}}
 						onClick={() => {
 							setPreferenceIndex(1);
 							setPreferences("Personal session");
 						}}
+						onMouseEnter={() => setIsHovered1(true)}
+						onMouseLeave={() => setIsHovered1(false)}
 					>
 						<div
 							style={{
@@ -55,7 +62,7 @@ const Choose = ({ setPreferences }) => {
 						>
 							<img
 								src="https://i.ibb.co/w6c8xsK/3304470.jpg"
-								width={100}
+								width={200}
 							/>
 						</div>
 
@@ -73,17 +80,22 @@ const Choose = ({ setPreferences }) => {
 					</div>
 					<div
 						style={{
-							width: "300px",
-							border: `2px solid ${
-								preferenceIndex === 2 ? "#007CFF" : "#A3A5BB"
+							width: "30%",
+							border: `1px solid ${
+								preferenceIndex === 2 ? "#000000" : "#ffffff"
 							}`,
 							borderRadius: "20px",
 							backgroundColor: "#ffffff",
+							transition: "transform 0.3s ease",
+							transform: isHovered2 ? "scale(1.1)" : "scale(1)",
+							boxShadow: "0px 0px 10px 0px #d4d4d4",
 						}}
 						onClick={() => {
 							setPreferenceIndex(2);
 							setPreferences("Group session");
 						}}
+						onMouseEnter={() => setIsHovered2(true)}
+						onMouseLeave={() => setIsHovered2(false)}
 					>
 						<div
 							style={{
@@ -93,7 +105,7 @@ const Choose = ({ setPreferences }) => {
 						>
 							<img
 								src="https://i.ibb.co/MNm2gzk/5102957.jpg"
-								width={100}
+								width={200}
 							/>
 						</div>
 						<div

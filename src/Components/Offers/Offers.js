@@ -1,34 +1,19 @@
-import React from "react";
-import { GrStatusGood } from "react-icons/gr";
-import { CgGym } from "react-icons/cg";
-import { TbMassage } from "react-icons/tb";
-import { GrYoga } from "react-icons/gr";
-import { RxCrossCircled } from "react-icons/rx";
-import styled from "styled-components";
+import React, { useState } from "react";
+import { RxCrossCircled, RxCheckCircled } from "react-icons/rx";
 
-export const JoinLink = styled.div`
-	border-radius: 50px;
-	background: #202020;
-	white-space: nowrap;
-	padding: 10px 22px;
-	color: #ffffff;
-	font-size: 16px;
-	outline: none;
-	border: none;
-	cursor: pointer;
-	transition: all 0.2s ease-in-out;
-	text-decoration: none;
-	width: 100px;
-	text-align: center;
-
-	&:hover {
-		transition: all 0.2s ease-in-out;
-		background: #ffffff;
-		color: #6c63ff;
-	}
-`;
+const box = {
+	width: "30%",
+	borderRadius: "10px",
+	padding: "10px",
+	position: "relative",
+	transition: "transform 0.3s ease",
+};
 
 const Offers = () => {
+	const [isHovered1, setIsHovered1] = useState(false);
+	const [isHovered2, setIsHovered2] = useState(false);
+	const [isHovered3, setIsHovered3] = useState(false);
+
 	return (
 		<div>
 			<div
@@ -38,15 +23,16 @@ const Offers = () => {
 					fontSize: "30px",
 				}}
 			>
-				Meet Our{" "}
+				Our{" "}
 				<span
 					style={{
-						backgroundColor: "#cfa119",
+						backgroundColor: "#000000",
 						padding: "10px",
 						borderRadius: "20px",
+						color: "#ffffff",
 					}}
 				>
-					Trainers
+					Offers
 				</span>
 			</div>
 			<div
@@ -59,41 +45,59 @@ const Offers = () => {
 				{/* one */}
 				<div
 					style={{
-						border: "1px solid red",
-						width: "400px",
-						borderRadius: "10px",
-						padding: "10px",
-						position: "relative",
+						...box,
+						background:
+							"linear-gradient(to right, #FFCBB2, #8B4513)",
+						boxShadow: "0px 0px 10px 0px  #8B4513",
+						transform: isHovered1 ? "scale(1.1)" : "scale(1)",
 					}}
+					onMouseEnter={() => setIsHovered1(true)}
+					onMouseLeave={() => setIsHovered1(false)}
 				>
 					<div
 						style={{
-							backgroundColor: "red",
-							width: "20%",
-							borderRadius: "50%",
-							position: "absolute",
-							top: "-12%",
-							right: "45%",
+							textAlign: "center",
+							marginTop: "10%",
+							color: "#333333",
+							fontSize: "20px",
+							fontWeight: "Bold",
 						}}
 					>
-						<CgGym size={70} style={{ padding: "5%" }} />
+						Bronze
 					</div>
-					<div style={{ textAlign: "center", marginTop: "10%" }}>
+					<div
+						style={{
+							textAlign: "center",
+							marginTop: "1%",
+							color: "#333333",
+						}}
+					>
 						{" "}
 						<span style={{ fontSize: "40px", fontWeight: "Bold" }}>
 							$10
 						</span>
-						/mo
 					</div>
-					<div style={{ marginTop: "10%" }}>
+					<div
+						style={{
+							marginTop: "10%",
+							fontWeight: "bold",
+							color: "#333333",
+						}}
+					>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<GrStatusGood style={{ color: "red" }} size={24} />
+							<RxCheckCircled
+								style={{ color: "#333333" }}
+								size={24}
+							/>
 							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								1 Month Subscription
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<GrStatusGood size={24} />
+							<RxCheckCircled
+								style={{ color: "#333333" }}
+								size={24}
+							/>
 							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Fitness
 							</div>
@@ -110,23 +114,6 @@ const Offers = () => {
 								Yoga
 							</div>
 						</div>
-					</div>
-					<div
-						style={{
-							marginTop: "10%",
-							display: "flex",
-							justifyContent: "center",
-						}}
-					>
-						<JoinLink
-							style={{
-								color: "#202020",
-								backgroundColor: "#ffffff",
-								border: "1px solid #202020",
-							}}
-						>
-							JOIN NOW
-						</JoinLink>
 					</div>
 				</div>
 
@@ -134,47 +121,68 @@ const Offers = () => {
 
 				<div
 					style={{
-						border: "1px solid red",
-						width: "400px",
-						borderRadius: "10px",
-						padding: "10px",
-						position: "relative",
+						...box,
+						background:
+							"linear-gradient(to right, #f2f2f2, #A9A9A9)",
+						boxShadow: "0px 0px 10px 0px  #A9A9A9",
+						transform: isHovered2 ? "scale(1.1)" : "scale(1)",
 					}}
+					onMouseEnter={() => setIsHovered2(true)}
+					onMouseLeave={() => setIsHovered2(false)}
 				>
 					<div
 						style={{
-							backgroundColor: "red",
-							width: "20%",
-							borderRadius: "50%",
-							position: "absolute",
-							top: "-12%",
-							right: "45%",
+							textAlign: "center",
+							marginTop: "10%",
+							color: "#708090",
+							fontSize: "20px",
+							fontWeight: "Bold",
 						}}
 					>
-						<TbMassage size={70} style={{ padding: "5%" }} />
+						Silver
 					</div>
-					<div style={{ textAlign: "center", marginTop: "10%" }}>
+					<div
+						style={{
+							textAlign: "center",
+							marginTop: "1%",
+							color: "#708090",
+						}}
+					>
 						{" "}
 						<span style={{ fontSize: "40px", fontWeight: "Bold" }}>
 							$30
 						</span>
-						/mo
 					</div>
-					<div style={{ marginTop: "10%" }}>
+					<div
+						style={{
+							marginTop: "10%",
+							color: "#708090",
+							fontWeight: "bold",
+						}}
+					>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<GrStatusGood style={{ color: "red" }} size={24} />
+							<RxCheckCircled
+								style={{ color: "#708090" }}
+								size={24}
+							/>
 							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
-								1 Month Subscription
+								2 Month Subscription
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<GrStatusGood size={24} />
+							<RxCheckCircled
+								style={{ color: "#708090" }}
+								size={24}
+							/>
 							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Fitness
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<GrStatusGood size={24} />
+							<RxCheckCircled
+								style={{ color: "#708090" }}
+								size={24}
+							/>
 							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Massage
 							</div>
@@ -186,97 +194,89 @@ const Offers = () => {
 							</div>
 						</div>
 					</div>
-					<div
-						style={{
-							marginTop: "10%",
-							display: "flex",
-							justifyContent: "center",
-						}}
-					>
-						<JoinLink
-							style={{
-								color: "#202020",
-								backgroundColor: "#ffffff",
-								border: "1px solid #202020",
-							}}
-						>
-							JOIN NOW
-						</JoinLink>
-					</div>
 				</div>
 
 				{/* three */}
 
 				<div
 					style={{
-						border: "1px solid red",
-						width: "400px",
-						borderRadius: "10px",
-						padding: "10px",
-						position: "relative",
+						...box,
+						background:
+							"linear-gradient(to right, #F7EF80, #DAA520)",
+						boxShadow: "0px 0px 10px 0px  #DAA520",
+						transform: isHovered3 ? "scale(1.1)" : "scale(1)",
 					}}
+					onMouseEnter={() => setIsHovered3(true)}
+					onMouseLeave={() => setIsHovered3(false)}
 				>
 					<div
 						style={{
-							backgroundColor: "red",
-							width: "20%",
-							borderRadius: "50%",
-							position: "absolute",
-							top: "-12%",
-							right: "45%",
+							textAlign: "center",
+							marginTop: "10%",
+							color: "#8B4513",
+							fontSize: "20px",
+							fontWeight: "Bold",
 						}}
 					>
-						<GrYoga size={70} style={{ padding: "5%" }} />
+						Gold
 					</div>
-					<div style={{ textAlign: "center", marginTop: "10%" }}>
+					<div
+						style={{
+							textAlign: "center",
+							marginTop: "1%",
+
+							color: "#8B4513",
+						}}
+					>
 						{" "}
 						<span style={{ fontSize: "40px", fontWeight: "Bold" }}>
-							$10
+							$50
 						</span>
 						/mo
 					</div>
-					<div style={{ marginTop: "10%" }}>
+					<div
+						style={{
+							marginTop: "10%",
+							color: "#8B4513",
+							fontWeight: "bold",
+						}}
+					>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<GrStatusGood style={{ color: "red" }} size={24} />
+							<RxCheckCircled
+								style={{ color: "#8B4513" }}
+								size={24}
+							/>
 							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
-								1 Month Subscription
+								3 Month Subscription
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<GrStatusGood size={24} />
+							<RxCheckCircled
+								style={{ color: "#8B4513" }}
+								size={24}
+							/>
 							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Fitness
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<GrStatusGood size={24} />
+							<RxCheckCircled
+								style={{ color: "#8B4513" }}
+								size={24}
+							/>
 							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Massage
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<GrStatusGood size={24} />
+							<RxCheckCircled
+								style={{ color: "#8B4513" }}
+								size={24}
+							/>
 							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Yoga
 							</div>
 						</div>
-					</div>
-					<div
-						style={{
-							marginTop: "10%",
-							display: "flex",
-							justifyContent: "center",
-						}}
-					>
-						<JoinLink
-							style={{
-								color: "#202020",
-								backgroundColor: "#ffffff",
-								border: "1px solid #202020",
-							}}
-						>
-							JOIN NOW
-						</JoinLink>
 					</div>
 				</div>
 			</div>
