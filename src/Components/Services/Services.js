@@ -61,7 +61,8 @@ const Services = () => {
 				>
 					<div style={{ display: "flex", justifyContent: "center" }}>
 						<img
-							src="https://i.ibb.co/0JrGX9k/Screen-Shot-2023-09-26-at-19-04-21.png"
+							src="https://i.ibb.co/p35LyN0/personall.png"
+							
 							width={200}
 							height={150}
 						/>
@@ -91,7 +92,7 @@ const Services = () => {
 				>
 					<div style={{ display: "flex", justifyContent: "center" }}>
 						<img
-							src="https://i.ibb.co/p35LyN0/personall.png"
+							src="https://i.ibb.co/0JrGX9k/Screen-Shot-2023-09-26-at-19-04-21.png"
 							width={200}
 							height={150}
 						/>

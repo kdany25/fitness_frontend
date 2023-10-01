@@ -5,8 +5,7 @@ import { useSelector } from "react-redux";
 import { logOutUser } from "../../Helpers/ApiCalls";
 import { useDispatch } from "react-redux";
 
-const HomeNavBar = () => {
-	const [data, setData] = useState([]);
+const HomeNavBar = ({data}) => {
 	const trainee = useSelector((state) => state.Trainee?.currentUser);
 	const today = new Date();
 	const states = useSelector((state) => state.Trainee);
@@ -15,15 +14,7 @@ const HomeNavBar = () => {
 		logOutUser(states, dispatch);
 	};
 
-	useEffect(() => {
-		fetch(`${BASE_URL}/Payment/trainee/${trainee._id}`)
-			.then((response) => response.json())
-			.then((data) => {
-				setData(data);
-			})
-			.catch((error) => console.error("Error fetching data:", error));
-	}, [trainee?._id]);
-	console.log(trainee._id);
+
 	return (
 		<div>
 			<div
@@ -55,7 +46,7 @@ const HomeNavBar = () => {
 									backgroundColor: "black",
 									fontWeight: "bold",
 								}}
-								to="/login"
+							
 							>
 								{" "}
 								{Math.floor(
