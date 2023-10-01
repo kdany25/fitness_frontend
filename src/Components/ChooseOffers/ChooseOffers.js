@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { GrStatusGood } from "react-icons/gr";
-import { CgGym } from "react-icons/cg";
-import { TbMassage, TbYoga } from "react-icons/tb";
-import { GrYoga } from "react-icons/gr";
 import { RxCrossCircled, RxCheckCircled } from "react-icons/rx";
 import styled from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../Helpers/requestMethod";
 import { useSelector } from "react-redux";
@@ -38,6 +33,9 @@ const ChooseOffers = ({ preference, trainer }) => {
 	const user = useSelector((state) => state.Trainee.currentUser);
 	const [errors, setErrors] = useState([]);
 	const [open, setOpen] = useState(false);
+	const [isHovered1, setIsHovered1] = useState(false);
+	const [isHovered2, setIsHovered2] = useState(false);
+	const [isHovered3, setIsHovered3] = useState(false);
 
 	const today = new Date();
 
@@ -113,6 +111,14 @@ const ChooseOffers = ({ preference, trainer }) => {
 			});
 	};
 
+	const box = {
+		width: "30%",
+		borderRadius: "10px",
+		padding: "10px",
+		position: "relative",
+		transition: "transform 0.3s ease",
+	};
+
 	function addMonths(date, months) {
 		const newDate = new Date(date);
 		const currentMonth = newDate.getMonth();
@@ -128,13 +134,13 @@ const ChooseOffers = ({ preference, trainer }) => {
 					textAlign: "center",
 					fontWeight: "Bold",
 					fontSize: "30px",
-					color: "#4d4b4b",
+					color: "#000000",
 				}}
 			>
 				Our{" "}
 				<span
 					style={{
-						backgroundColor: "#007CFF",
+						backgroundColor: "#000000",
 						padding: "10px",
 						borderRadius: "20px",
 						color: "#ffffff",
@@ -153,89 +159,72 @@ const ChooseOffers = ({ preference, trainer }) => {
 				{/* one */}
 				<div
 					style={{
-						width: "400px",
-						borderRadius: "10px",
-						padding: "10px",
-						position: "relative",
-						backgroundColor: "#FFFFFF",
-						border: "1px solid #FFE3BB",
+						...box,
+						background:
+							"linear-gradient(to right, #FFCBB2, #8B4513)",
+						boxShadow: "0px 0px 10px 0px  #8B4513",
+						transform: isHovered1 ? "scale(1.1)" : "scale(1)",
 					}}
+					onMouseEnter={() => setIsHovered1(true)}
+					onMouseLeave={() => setIsHovered1(false)}
 				>
 					<div
 						style={{
-							backgroundColor: "#42B5A6",
-							width: "20%",
-							borderRadius: "50%",
-							position: "absolute",
-							top: "-12%",
-							right: "45%",
+							textAlign: "center",
+							marginTop: "10%",
+							color: "#333333",
+							fontSize: "20px",
+							fontWeight: "Bold",
 						}}
 					>
-						<CgGym
-							size={70}
-							style={{ padding: "5%" }}
-							color="#ffffff"
-						/>
+						Bronze
 					</div>
-					<div style={{ textAlign: "center", marginTop: "10%" }}>
+					<div
+						style={{
+							textAlign: "center",
+							marginTop: "1%",
+							color: "#333333",
+						}}
+					>
 						{" "}
-						<span
-							style={{
-								fontSize: "40px",
-								fontWeight: "Bold",
-								color: "#FF3F42",
-							}}
-						>
+						<span style={{ fontSize: "40px", fontWeight: "Bold" }}>
 							$10
 						</span>
-						/mo
 					</div>
-					<div style={{ marginTop: "10%" }}>
+					<div
+						style={{
+							marginTop: "10%",
+							fontWeight: "bold",
+							color: "#333333",
+						}}
+					>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<RxCheckCircled color="#42B5A6" size={24} />
-							<div
-								style={{
-									marginLeft: "1%",
-									fontSize: "24px",
-									color: "#575555",
-								}}
-							>
+							<RxCheckCircled
+								style={{ color: "#333333" }}
+								size={24}
+							/>
+							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								1 Month Subscription
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<RxCheckCircled color="#42B5A6" size={24} />
-							<div
-								style={{
-									marginLeft: "1%",
-									fontSize: "24px",
-									color: "#575555",
-								}}
-							>
+							<RxCheckCircled
+								style={{ color: "#333333" }}
+								size={24}
+							/>
+							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Fitness
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<RxCrossCircled size={24} color="#FF3F42" />
-							<div
-								style={{
-									marginLeft: "1%",
-									fontSize: "24px",
-									color: "#575555",
-								}}
-							>
+							<RxCrossCircled size={24} />
+							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Massage
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<RxCrossCircled size={24} color="#FF3F42" />
-							<div
-								style={{
-									marginLeft: "1%",
-									fontSize: "24px",
-									color: "#575555",
-								}}
-							>
+							<RxCrossCircled size={24} />
+							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Yoga
 							</div>
 						</div>
@@ -250,14 +239,14 @@ const ChooseOffers = ({ preference, trainer }) => {
 						<JoinLink
 							style={{
 								color: "#FFFFFF",
-								backgroundColor: "#42B5A6",
-								border: "1px solid #FFFFFF",
+								backgroundColor: "#303030",
+								fontWeight: "bold",
 							}}
 							onClick={() =>
 								payment("Bronze", addMonths(today, 1))
 							}
 						>
-							JOIN NOW
+							Join
 						</JoinLink>
 					</div>
 				</div>
@@ -266,89 +255,75 @@ const ChooseOffers = ({ preference, trainer }) => {
 
 				<div
 					style={{
-						width: "400px",
-						borderRadius: "10px",
-						padding: "10px",
-						position: "relative",
-						backgroundColor: "#FFFFFF",
-						border: "1px solid #FFE3BB",
+						...box,
+						background:
+							"linear-gradient(to right, #f2f2f2, #A9A9A9)",
+						boxShadow: "0px 0px 10px 0px  #A9A9A9",
+						transform: isHovered2 ? "scale(1.1)" : "scale(1)",
 					}}
+					onMouseEnter={() => setIsHovered2(true)}
+					onMouseLeave={() => setIsHovered2(false)}
 				>
 					<div
 						style={{
-							backgroundColor: "#42B5A6",
-							width: "20%",
-							borderRadius: "50%",
-							position: "absolute",
-							top: "-12%",
-							right: "45%",
+							textAlign: "center",
+							marginTop: "10%",
+							color: "#708090",
+							fontSize: "20px",
+							fontWeight: "Bold",
 						}}
 					>
-						<TbMassage
-							size={70}
-							style={{ padding: "5%" }}
-							color="#ffffff"
-						/>
+						Silver
 					</div>
-					<div style={{ textAlign: "center", marginTop: "10%" }}>
+					<div
+						style={{
+							textAlign: "center",
+							marginTop: "1%",
+							color: "#708090",
+						}}
+					>
 						{" "}
-						<span
-							style={{
-								fontSize: "40px",
-								fontWeight: "Bold",
-								color: "#FF3F42",
-							}}
-						>
+						<span style={{ fontSize: "40px", fontWeight: "Bold" }}>
 							$30
 						</span>
-						/mo
 					</div>
-					<div style={{ marginTop: "10%" }}>
+					<div
+						style={{
+							marginTop: "10%",
+							color: "#708090",
+							fontWeight: "bold",
+						}}
+					>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<RxCheckCircled color="#42B5A6" size={24} />
-							<div
-								style={{
-									marginLeft: "1%",
-									fontSize: "24px",
-									color: "#575555",
-								}}
-							>
+							<RxCheckCircled
+								style={{ color: "#708090" }}
+								size={24}
+							/>
+							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								2 Month Subscription
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<RxCheckCircled color="#42B5A6" size={24} />
-							<div
-								style={{
-									marginLeft: "1%",
-									fontSize: "24px",
-									color: "#575555",
-								}}
-							>
+							<RxCheckCircled
+								style={{ color: "#708090" }}
+								size={24}
+							/>
+							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Fitness
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<RxCheckCircled size={24} color="#42B5A6" />
-							<div
-								style={{
-									marginLeft: "1%",
-									fontSize: "24px",
-									color: "#575555",
-								}}
-							>
+							<RxCheckCircled
+								style={{ color: "#708090" }}
+								size={24}
+							/>
+							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Massage
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<RxCrossCircled size={24} color="#FF3F42" />
-							<div
-								style={{
-									marginLeft: "1%",
-									fontSize: "24px",
-									color: "#575555",
-								}}
-							>
+							<RxCrossCircled size={24} />
+							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Yoga
 							</div>
 						</div>
@@ -363,14 +338,14 @@ const ChooseOffers = ({ preference, trainer }) => {
 						<JoinLink
 							style={{
 								color: "#FFFFFF",
-								backgroundColor: "#42B5A6",
-								border: "1px solid #FFFFFF",
+								backgroundColor: "#303030",
+								fontWeight: "bold",
 							}}
 							onClick={() =>
 								payment("Silver", addMonths(today, 2))
 							}
 						>
-							JOIN NOW
+							Join
 						</JoinLink>
 					</div>
 				</div>
@@ -379,89 +354,79 @@ const ChooseOffers = ({ preference, trainer }) => {
 
 				<div
 					style={{
-						width: "400px",
-						borderRadius: "10px",
-						padding: "10px",
-						position: "relative",
-						backgroundColor: "#FFFFFF",
-						border: "1px solid #FFE3BB",
+						...box,
+						background:
+							"linear-gradient(to right, #F7EF80, #DAA520)",
+						boxShadow: "0px 0px 10px 0px  #DAA520",
+						transform: isHovered3 ? "scale(1.1)" : "scale(1)",
 					}}
+					onMouseEnter={() => setIsHovered3(true)}
+					onMouseLeave={() => setIsHovered3(false)}
 				>
 					<div
 						style={{
-							backgroundColor: "#42B5A6",
-							width: "20%",
-							borderRadius: "50%",
-							position: "absolute",
-							top: "-12%",
-							right: "45%",
+							textAlign: "center",
+							marginTop: "10%",
+							color: "#8B4513",
+							fontSize: "20px",
+							fontWeight: "Bold",
 						}}
 					>
-						<TbYoga
-							size={70}
-							style={{ padding: "5%" }}
-							color="#ffffff"
-						/>
+						Gold
 					</div>
-					<div style={{ textAlign: "center", marginTop: "10%" }}>
+					<div
+						style={{
+							textAlign: "center",
+							marginTop: "1%",
+
+							color: "#8B4513",
+						}}
+					>
 						{" "}
-						<span
-							style={{
-								fontSize: "40px",
-								fontWeight: "Bold",
-								color: "#FF3F42",
-							}}
-						>
+						<span style={{ fontSize: "40px", fontWeight: "Bold" }}>
 							$50
 						</span>
-						/mo
 					</div>
-					<div style={{ marginTop: "10%" }}>
+					<div
+						style={{
+							marginTop: "10%",
+							color: "#8B4513",
+							fontWeight: "bold",
+						}}
+					>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<RxCheckCircled color="#42B5A6" size={24} />
-							<div
-								style={{
-									marginLeft: "1%",
-									fontSize: "24px",
-									color: "#575555",
-								}}
-							>
+							<RxCheckCircled
+								style={{ color: "#8B4513" }}
+								size={24}
+							/>
+							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								3 Month Subscription
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<RxCheckCircled color="#42B5A6" size={24} />
-							<div
-								style={{
-									marginLeft: "1%",
-									fontSize: "24px",
-									color: "#575555",
-								}}
-							>
+							<RxCheckCircled
+								style={{ color: "#8B4513" }}
+								size={24}
+							/>
+							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Fitness
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<RxCheckCircled color="#42B5A6" size={24} />
-							<div
-								style={{
-									marginLeft: "1%",
-									fontSize: "24px",
-									color: "#575555",
-								}}
-							>
+							<RxCheckCircled
+								style={{ color: "#8B4513" }}
+								size={24}
+							/>
+							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Massage
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
-							<RxCheckCircled color="#42B5A6" size={24} />
-							<div
-								style={{
-									marginLeft: "1%",
-									fontSize: "24px",
-									color: "#575555",
-								}}
-							>
+							<RxCheckCircled
+								style={{ color: "#8B4513" }}
+								size={24}
+							/>
+							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
 								Yoga
 							</div>
 						</div>
@@ -476,12 +441,12 @@ const ChooseOffers = ({ preference, trainer }) => {
 						<JoinLink
 							style={{
 								color: "#FFFFFF",
-								backgroundColor: "#42B5A6",
-								border: "1px solid #FFFFFF",
+								backgroundColor: "#303030",
+								fontWeight: "bold",
 							}}
 							onClick={() => payment("Gold", addMonths(today, 3))}
 						>
-							JOIN NOW
+							Join
 						</JoinLink>
 					</div>
 				</div>

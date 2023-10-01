@@ -16,12 +16,14 @@ import { useDispatch } from "react-redux";
 import { GiMoneyStack } from "react-icons/gi";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { FaUserAlt } from "react-icons/fa";
-
+import { useNavigate } from "react-router-dom";
 function SideBarManager() {
 	const states = useSelector((state) => state.Manager);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const handleClick = (e) => {
 		logOutManager(states, dispatch);
+		navigate("/");
 	};
 	return (
 		<SideBarContainer style={{ width: "250px" }}>

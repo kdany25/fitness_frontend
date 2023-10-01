@@ -13,19 +13,7 @@ const Offers = () => {
 	const [isHovered1, setIsHovered1] = useState(false);
 	const [isHovered2, setIsHovered2] = useState(false);
 	const [isHovered3, setIsHovered3] = useState(false);
-	const boxStyle1 = {
-		...box,
-		transform: isHovered1 ? "scale(1.1)" : "scale(1)",
-	};
-	const boxStyle2 = {
-		...box,
-		transform: isHovered2 ? "scale(1.1)" : "scale(1)",
-	};
 
-	const boxStyle3 = {
-		...box,
-		transform: isHovered3 ? "scale(1.1)" : "scale(1)",
-	};
 	return (
 		<div>
 			<div
@@ -178,7 +166,7 @@ const Offers = () => {
 								size={24}
 							/>
 							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
-								1 Month Subscription
+								2 Month Subscription
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>
@@ -242,7 +230,7 @@ const Offers = () => {
 					>
 						{" "}
 						<span style={{ fontSize: "40px", fontWeight: "Bold" }}>
-							$10
+							$50
 						</span>
 						/mo
 					</div>
@@ -259,7 +247,7 @@ const Offers = () => {
 								size={24}
 							/>
 							<div style={{ marginLeft: "1%", fontSize: "24px" }}>
-								1 Month Subscription
+								3 Month Subscription
 							</div>
 						</div>
 						<div style={{ display: "flex", marginTop: "3%" }}>

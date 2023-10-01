@@ -12,8 +12,6 @@ const Login = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const trainee = useSelector((state) => state.Trainee?.currentUser);
-
 	const handleLogin = async () => {
 		const response = await login(dispatch, { email, password });
 		if (response === "Logged In") {
@@ -152,6 +150,18 @@ const Login = () => {
 						}}
 					>
 						Login As Trainer
+					</div>
+				</Link>
+				<Link to="/loginManager">
+					<div
+						style={{
+							color: "#A3A5BB",
+							marginTop: "5%",
+							fontSize: "18px",
+							marginLeft: "5%",
+						}}
+					>
+						Login as Manager
 					</div>
 				</Link>
 			</div>

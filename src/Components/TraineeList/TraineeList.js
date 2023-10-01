@@ -20,7 +20,7 @@ const TraineeList = () => {
 				>
 					<div>
 						<img
-							src="https://i.ibb.co/ZMKR1bh/p11.jpg"
+							src="https://i.ibb.co/4W5ntbv/13546.jpg"
 							width={60}
 							height={60}
 							style={{ borderRadius: "50%" }}
