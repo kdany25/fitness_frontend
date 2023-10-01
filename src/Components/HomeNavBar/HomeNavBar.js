@@ -23,7 +23,7 @@ const HomeNavBar = () => {
 			})
 			.catch((error) => console.error("Error fetching data:", error));
 	}, [trainee?._id]);
-
+	console.log(trainee._id);
 	return (
 		<div>
 			<div
@@ -50,7 +50,13 @@ const HomeNavBar = () => {
 				{data[0] && (
 					<div style={{ display: "flex" }}>
 						<NavBtn>
-							<NavBtnLink to="/login">
+							<NavBtnLink
+								style={{
+									backgroundColor: "black",
+									fontWeight: "bold",
+								}}
+								to="/login"
+							>
 								{" "}
 								{Math.floor(
 									(new Date(data[0]?.endingDate) - today) /
@@ -61,9 +67,14 @@ const HomeNavBar = () => {
 						</NavBtn>
 					</div>
 				)}
+
 				<div style={{ display: "flex" }}>
 					<NavBtn>
 						<NavBtnLink
+							style={{
+								backgroundColor: "black",
+								fontWeight: "bold",
+							}}
 							to="/"
 							onClick={() => handleClick()}
 						>

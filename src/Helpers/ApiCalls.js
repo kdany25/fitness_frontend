@@ -33,6 +33,7 @@ export const login = async (dispatch, user) => {
 	try {
 		const res = await apiRequest.post("TraineeAuth/login", user);
 		dispatch(loginSuccess(res.data));
+		return "Logged In";
 	} catch (err) {
 		dispatch(loginFailure());
 	}

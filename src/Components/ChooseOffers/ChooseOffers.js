@@ -38,7 +38,7 @@ const ChooseOffers = ({ preference, trainer }) => {
 	const user = useSelector((state) => state.Trainee.currentUser);
 	const [errors, setErrors] = useState([]);
 	const [open, setOpen] = useState(false);
-	const handleClose = () => setOpen(false);
+
 	const today = new Date();
 
 	async function fetchData() {
@@ -73,6 +73,7 @@ const ChooseOffers = ({ preference, trainer }) => {
 			await axios
 				.post(`${BASE_URL}/Payment`, {
 					traineeId: user._id,
+					name: user.name,
 					datePaid: today,
 					package: packages,
 					endingDate: endDate,
