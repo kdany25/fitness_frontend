@@ -6,7 +6,7 @@ const Services = () => {
 	const [isHovered3, setIsHovered3] = useState(false);
 
 	const boxStyle = {
-		width: "400px",
+		width: "30%",
 		backgroundColor: "#ffffff",
 		boxShadow: "0px 0px 10px 0px #d4d4d4",
 		transition: "transform 0.3s ease",
@@ -14,16 +14,16 @@ const Services = () => {
 	};
 	const boxStyle1 = {
 		...boxStyle,
-		transform: isHovered1 ? "scale(1.1)" : "scale(1)", // Scale box 2
+		transform: isHovered1 ? "scale(1.1)" : "scale(1)",
 	};
 	const boxStyle2 = {
 		...boxStyle,
-		transform: isHovered2 ? "scale(1.1)" : "scale(1)", // Scale box 2
+		transform: isHovered2 ? "scale(1.1)" : "scale(1)",
 	};
 
 	const boxStyle3 = {
 		...boxStyle,
-		transform: isHovered3 ? "scale(1.1)" : "scale(1)", // Scale box 3
+		transform: isHovered3 ? "scale(1.1)" : "scale(1)",
 	};
 
 	return (
