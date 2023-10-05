@@ -3,7 +3,6 @@ import { JoinLink, LoginBtn } from "./style";
 import { useDispatch } from "react-redux";
 import { login } from "../../Helpers/ApiCalls";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -34,6 +33,7 @@ const Login = () => {
 					marginRight: "5%",
 				}}
 			>
+				
 				<div
 					style={{
 						display: "flex",
