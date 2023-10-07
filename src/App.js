@@ -15,6 +15,8 @@ import LoginManager from "./Pages/LoginManager/LoginManager";
 import AddTrainer from "./Pages/AddTrainer/AddTrainer";
 import AddManager from "./Pages/AddManager/AddManager";
 import PaymentList from "./Pages/Payment/PaymentList";
+import UpdateTrainer from "./Components/updateTrainer/UpdateTrainer";
+import UpdateTrainers from "./Pages/UpdateTra/UpdateTrainer";
 
 function App() {
 	const trainee = useSelector((state) => state.Trainee?.currentUser);
@@ -63,6 +65,10 @@ function App() {
 							<Route
 								path="/addTrainer"
 								element={<AddTrainer />}
+							/>
+							<Route
+								path="/updateTrainer/:id"
+								element={<UpdateTrainers />}
 							/>
 							<Route
 								path="/addManager"
