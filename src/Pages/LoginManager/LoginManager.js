@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { LoginBtn } from "./style";
+import { LoginBtn, Faeye } from "./style";
 import { useDispatch } from "react-redux";
 import { loginManager } from "../../Helpers/ApiCalls";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LoginManager = () => {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
+	const [showPassword, setShowPassword] = useState(false);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -16,6 +18,9 @@ const LoginManager = () => {
 		if (response === "Logged In") {
 			navigate("/");
 		}
+	};
+	const handleTogglePassword = () => {
+		setShowPassword((prevState) => !prevState);
 	};
 	return (
 		<div style={{ display: "flex", height: "100vh" }}>
@@ -81,8 +86,9 @@ const LoginManager = () => {
 						Password
 					</div>
 
-					<div style={{ marginTop: "2%" }}>
+					<div style={{ marginTop: "2%", position: "relative" }}>
 						<input
+							type={showPassword ? "text" : "password"}
 							placeholder="Your Password"
 							style={{
 								padding: "20px",
@@ -94,6 +100,17 @@ const LoginManager = () => {
 							}}
 							onChange={(e, v) => setPassword(e.target.value)}
 						/>
+						{showPassword ? (
+							<FaEyeSlash
+								style={Faeye}
+								onClick={handleTogglePassword}
+							/>
+						) : (
+							<FaEye
+								style={Faeye}
+								onClick={handleTogglePassword}
+							/>
+						)}
 					</div>
 				</div>
 				<div style={{ marginLeft: "5%", marginTop: "7%" }}>

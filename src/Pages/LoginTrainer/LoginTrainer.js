@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { LoginBtn } from "./style";
+import { LoginBtn, Faeye } from "./style";
 import { useDispatch } from "react-redux";
 import { loginTrainer } from "../../Helpers/ApiCalls";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LoginTrainer = () => {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
+	const [showPassword, setShowPassword] = useState(false);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -16,6 +18,9 @@ const LoginTrainer = () => {
 		if (response === "Logged In") {
 			navigate("/");
 		}
+	};
+	const handleTogglePassword = () => {
+		setShowPassword((prevState) => !prevState);
 	};
 	return (
 		<div style={{ display: "flex", height: "100vh" }}>
@@ -76,7 +81,13 @@ const LoginTrainer = () => {
 					</div>
 				</div>
 
-				<div style={{ marginLeft: "5%", marginTop: "5%" }}>
+				<div
+					style={{
+						marginLeft: "5%",
+						marginTop: "5%",
+						position: "relative",
+					}}
+				>
 					<div style={{ fontSize: "20px", fontWeight: "normal" }}>
 						Password
 					</div>
@@ -94,6 +105,17 @@ const LoginTrainer = () => {
 							}}
 							onChange={(e, v) => setPassword(e.target.value)}
 						/>
+						{showPassword ? (
+							<FaEyeSlash
+								style={Faeye}
+								onClick={handleTogglePassword}
+							/>
+						) : (
+							<FaEye
+								style={Faeye}
+								onClick={handleTogglePassword}
+							/>
+						)}
 					</div>
 				</div>
 				<div style={{ marginLeft: "5%", marginTop: "7%" }}>
@@ -138,4 +160,3 @@ const LoginTrainer = () => {
 };
 
 export default LoginTrainer;
-

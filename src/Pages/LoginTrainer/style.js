@@ -21,3 +21,10 @@ export const LoginBtn = styled.div`
 		color: #6c63ff;
 	}
 `;
+export const Faeye = {
+	position: "absolute",
+	top: "50%",
+	right: "25%",
+	transform: "translateY(-50%)",
+	cursor: "pointer",
+};
