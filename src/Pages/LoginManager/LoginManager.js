@@ -10,6 +10,7 @@ const LoginManager = () => {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
 	const [showPassword, setShowPassword] = useState(false);
+	const [invalid, setInvalid] = useState(false);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -17,6 +18,10 @@ const LoginManager = () => {
 		const response = await loginManager(dispatch, { email, password });
 		if (response === "Logged In") {
 			navigate("/");
+			setInvalid(false);
+		}
+		if (response === "failed") {
+			setInvalid(true);
 		}
 	};
 	const handleTogglePassword = () => {
@@ -112,6 +117,19 @@ const LoginManager = () => {
 							/>
 						)}
 					</div>
+				</div>
+				<div>
+					{invalid && (
+						<div
+							style={{
+								marginLeft: "5%",
+								marginTop: "2%",
+								color: "red",
+							}}
+						>
+							Invalid Credentials
+						</div>
+					)}
 				</div>
 				<div style={{ marginLeft: "5%", marginTop: "7%" }}>
 					<LoginBtn

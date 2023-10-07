@@ -36,6 +36,7 @@ export const login = async (dispatch, user) => {
 		return "Logged In";
 	} catch (err) {
 		dispatch(loginFailure());
+		return "failed";
 	}
 };
 
@@ -58,6 +59,7 @@ export const loginTrainer = async (dispatch, user) => {
 		return "Logged In";
 	} catch (err) {
 		dispatch(loginTrainerFailure());
+		return "failed";
 	}
 };
 
@@ -80,6 +82,7 @@ export const loginManager = async (dispatch, user) => {
 		return "Logged In";
 	} catch (err) {
 		dispatch(loginManagerFailure());
+		return "failed";
 	}
 };
 

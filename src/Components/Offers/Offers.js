@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { RxCrossCircled, RxCheckCircled } from "react-icons/rx";
 
 const box = {
-	width: "30%",
+	width: "22%",
 	borderRadius: "10px",
 	padding: "10px",
 	position: "relative",
@@ -13,6 +13,7 @@ const Offers = () => {
 	const [isHovered1, setIsHovered1] = useState(false);
 	const [isHovered2, setIsHovered2] = useState(false);
 	const [isHovered3, setIsHovered3] = useState(false);
+	const [isHovered4, setIsHovered4] = useState(false);
 
 	return (
 		<div>
@@ -42,6 +43,103 @@ const Offers = () => {
 					marginTop: "5%",
 				}}
 			>
+				{/* one one */}
+				<div
+						style={{
+							...box,
+							background:
+								"linear-gradient(to right, white, black)",
+							boxShadow: "0px 0px 10px 0px  #000",
+							transform: isHovered4 ? "scale(1.1)" : "scale(1)",
+						}}
+						onMouseEnter={() => setIsHovered4(true)}
+						onMouseLeave={() => setIsHovered4(false)}
+					>
+						<div
+							style={{
+								textAlign: "center",
+								marginTop: "10%",
+								color: "#333333",
+								fontSize: "20px",
+								fontWeight: "Bold",
+							}}
+						>
+							A day
+						</div>
+						<div
+							style={{
+								textAlign: "center",
+								marginTop: "1%",
+								color: "#333333",
+							}}
+						>
+							{" "}
+							<span
+								style={{ fontSize: "40px", fontWeight: "Bold" }}
+							>
+								$2
+							</span>
+						</div>
+						<div
+							style={{
+								marginTop: "10%",
+								fontWeight: "bold",
+								color: "#333333",
+							}}
+						>
+							<div style={{ display: "flex", marginTop: "3%" }}>
+								<RxCheckCircled
+									style={{ color: "#333333" }}
+									size={24}
+								/>
+								<div
+									style={{
+										marginLeft: "1%",
+										fontSize: "24px",
+									}}
+								>
+									1 Day
+								</div>
+							</div>
+							<div style={{ display: "flex", marginTop: "3%" }}>
+								<RxCheckCircled
+									style={{ color: "#333333" }}
+									size={24}
+								/>
+								<div
+									style={{
+										marginLeft: "1%",
+										fontSize: "24px",
+									}}
+								>
+									Fitness
+								</div>
+							</div>
+							<div style={{ display: "flex", marginTop: "3%" }}>
+								<RxCrossCircled size={24} />
+								<div
+									style={{
+										marginLeft: "1%",
+										fontSize: "24px",
+									}}
+								>
+									Massage
+								</div>
+							</div>
+							<div style={{ display: "flex", marginTop: "3%" }}>
+								<RxCrossCircled size={24} />
+								<div
+									style={{
+										marginLeft: "1%",
+										fontSize: "24px",
+									}}
+									Ï
+								>
+									Yoga
+								</div>
+							</div>
+						</div>
+					</div>
 				{/* one */}
 				<div
 					style={{

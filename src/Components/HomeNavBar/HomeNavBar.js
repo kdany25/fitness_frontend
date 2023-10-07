@@ -6,7 +6,6 @@ import { logOutUser } from "../../Helpers/ApiCalls";
 import { useDispatch } from "react-redux";
 
 const HomeNavBar = ({data}) => {
-	const trainee = useSelector((state) => state.Trainee?.currentUser);
 	const today = new Date();
 	const states = useSelector((state) => state.Trainee);
 	const dispatch = useDispatch();

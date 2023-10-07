@@ -23,7 +23,7 @@ export const LoginBtn = styled.div`
 `;
 export const Faeye = {
 	position: "absolute",
-	top: "50%",
+	top: "65%",
 	right: "25%",
 	transform: "translateY(-50%)",
 	cursor: "pointer",
