@@ -15,7 +15,6 @@ import LoginManager from "./Pages/LoginManager/LoginManager";
 import AddTrainer from "./Pages/AddTrainer/AddTrainer";
 import AddManager from "./Pages/AddManager/AddManager";
 import PaymentList from "./Pages/Payment/PaymentList";
-import UpdateTrainer from "./Components/updateTrainer/UpdateTrainer";
 import UpdateTrainers from "./Pages/UpdateTra/UpdateTrainer";
 
 function App() {
