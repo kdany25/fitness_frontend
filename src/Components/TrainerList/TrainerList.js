@@ -25,7 +25,7 @@ const TrainerList = () => {
 		try {
 			const res = await axios.delete(`${BASE_URL}/Trainer/${id}`);
 			if (res.status === 200) {
-				toast.success("deleted  successfully");
+				toast.success("deleted trainer  successfully");
 				fetchData();
 			}
 		} catch (error) {
