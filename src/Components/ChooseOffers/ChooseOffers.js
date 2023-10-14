@@ -233,7 +233,7 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 							<span
 								style={{ fontSize: "40px", fontWeight: "Bold" }}
 							>
-								$2
+								3k Rwf
 							</span>
 						</div>
 						<div
@@ -350,7 +350,7 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 							<span
 								style={{ fontSize: "40px", fontWeight: "Bold" }}
 							>
-								$10
+								15K Rwf
 							</span>
 						</div>
 						<div
@@ -468,7 +468,7 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 							<span
 								style={{ fontSize: "40px", fontWeight: "Bold" }}
 							>
-								$30
+								30k Rwf
 							</span>
 						</div>
 						<div
@@ -590,7 +590,7 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 							<span
 								style={{ fontSize: "40px", fontWeight: "Bold" }}
 							>
-								$50
+								50k Rwf
 							</span>
 						</div>
 						<div

@@ -16,6 +16,7 @@ import AddTrainer from "./Pages/AddTrainer/AddTrainer";
 import AddManager from "./Pages/AddManager/AddManager";
 import PaymentList from "./Pages/Payment/PaymentList";
 import UpdateTrainers from "./Pages/UpdateTra/UpdateTrainer";
+import TraineesList from "./Pages/TraineesList/List";
 
 function App() {
 	const trainee = useSelector((state) => state.Trainee?.currentUser);
@@ -73,6 +74,7 @@ function App() {
 								path="/addManager"
 								element={<AddManager />}
 							/>
+							<Route path="/trainees" element={<TraineesList />} />
 							<Route path="/payment" element={<PaymentList />} />
 						</Routes>
 					</div>

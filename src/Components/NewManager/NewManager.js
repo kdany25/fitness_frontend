@@ -6,6 +6,8 @@ import Box from "@mui/material/Box";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./passwordStyle.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 const style = {
 	position: "absolute",
 	top: "50%",
@@ -18,12 +20,23 @@ const style = {
 	p: 4,
 	borderRadius: "20px",
 };
+const Faeye = {
+	position: "absolute",
+	top: "45%",
+	left: "30%",
+	transform: "translateY(-50%)",
+	cursor: "pointer",
+};
 
 const NewManager = () => {
 	const [inputs, setInputs] = useState({});
 	const [errors, setErrors] = useState([]);
 	const [open, setOpen] = useState(false);
 	const handleClose = () => setOpen(false);
+	const [showPassword, setShowPassword] = useState(false);
+	const handleTogglePassword = () => {
+		setShowPassword((prevState) => !prevState);
+	};
 	const handleChange = (key, e) => {
 		setInputs((prev) => {
 			return { ...prev, [key]: e };
@@ -191,13 +204,14 @@ const NewManager = () => {
 					</div>
 				</div>
 
-				<div style={{ marginTop: "1%" }}>
+				<div style={{ marginTop: "1%", position: "relative" }}>
 					<div style={{ fontSize: "15px", fontWeight: "normal" }}>
 						Password
 					</div>
 
 					<div style={{ marginTop: "1%" }}>
 						<input
+							type={showPassword ? "text" : "password"}
 							placeholder="Type Password"
 							style={{
 								padding: "20px",
@@ -211,6 +225,17 @@ const NewManager = () => {
 								handleChange("password", e.target.value)
 							}
 						/>
+						{showPassword ? (
+							<FaEyeSlash
+								style={Faeye}
+								onClick={handleTogglePassword}
+							/>
+						) : (
+							<FaEye
+								style={Faeye}
+								onClick={handleTogglePassword}
+							/>
+						)}
 					</div>
 					<div>
 						<div className="password-strength-bar">

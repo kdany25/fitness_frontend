@@ -82,6 +82,20 @@ function SideBarManager() {
 							</HrefLinks>
 						</li>
 					</Link>
+					<Link to="/trainees" className="link">
+						<li style={linkItems}>
+							<HrefLinks>
+								<AiOutlineUserAdd />
+								<span
+									style={{
+										marginLeft: "8px",
+									}}
+								>
+									Trainees
+								</span>
+							</HrefLinks>
+						</li>
+					</Link>
 					<Link to="/payment" className="link">
 						<li style={linkItems}>
 							<HrefLinks>

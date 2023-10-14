@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./passwordStyle.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const style = {
 	position: "absolute",
@@ -22,11 +23,22 @@ const style = {
 	borderRadius: "20px",
 };
 
+const Faeye = {
+	position: "absolute",
+	top: "65%",
+	right: "28%",
+	transform: "translateY(-50%)",
+	cursor: "pointer",
+};
+
 const SignUp = () => {
 	const [inputs, setInputs] = useState({});
-	const [shouldRedirect, setShouldRedirect] = useState(false);
 	const [errors, setErrors] = useState([]);
 	const [open, setOpen] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
+	const handleTogglePassword = () => {
+		setShowPassword((prevState) => !prevState);
+	};
 	const handleClose = () => setOpen(false);
 
 	const handleChange = (key, e) => {
@@ -102,7 +114,6 @@ const SignUp = () => {
 				.then((res) => {
 					if (res.status === 200 || res.status === 201) {
 						toast.success("Created Account successfully");
-						setShouldRedirect(true);
 					}
 				})
 				.catch((error) => {
@@ -110,9 +121,7 @@ const SignUp = () => {
 				});
 		}
 	};
-	if (shouldRedirect) {
-		return <Navigate to="/" />;
-	}
+
 	return (
 		<>
 			<Modal
@@ -264,13 +273,20 @@ const SignUp = () => {
 							/>
 						</div>
 					</div>
-					<div style={{ marginLeft: "5%", marginTop: "3%" }}>
+					<div
+						style={{
+							marginLeft: "5%",
+							marginTop: "3%",
+							position: "relative",
+						}}
+					>
 						<div style={{ fontSize: "20px", fontWeight: "normal" }}>
 							Password
 						</div>
 
 						<div style={{ marginTop: "1%" }}>
 							<input
+								type={showPassword ? "text" : "password"}
 								placeholder="Your Password"
 								style={{
 									padding: "20px",
@@ -284,6 +300,17 @@ const SignUp = () => {
 									handleChange("password", e.target.value)
 								}
 							/>
+							{showPassword ? (
+								<FaEyeSlash
+									style={Faeye}
+									onClick={handleTogglePassword}
+								/>
+							) : (
+								<FaEye
+									style={Faeye}
+									onClick={handleTogglePassword}
+								/>
+							)}
 						</div>
 					</div>
 					<div style={{ marginLeft: "5%" }}>

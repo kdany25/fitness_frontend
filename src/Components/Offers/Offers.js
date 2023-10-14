@@ -45,101 +45,98 @@ const Offers = () => {
 			>
 				{/* one one */}
 				<div
+					style={{
+						...box,
+						background: "linear-gradient(to right, white, black)",
+						boxShadow: "0px 0px 10px 0px  #000",
+						transform: isHovered4 ? "scale(1.1)" : "scale(1)",
+					}}
+					onMouseEnter={() => setIsHovered4(true)}
+					onMouseLeave={() => setIsHovered4(false)}
+				>
+					<div
 						style={{
-							...box,
-							background:
-								"linear-gradient(to right, white, black)",
-							boxShadow: "0px 0px 10px 0px  #000",
-							transform: isHovered4 ? "scale(1.1)" : "scale(1)",
+							textAlign: "center",
+							marginTop: "10%",
+							color: "#333333",
+							fontSize: "20px",
+							fontWeight: "Bold",
 						}}
-						onMouseEnter={() => setIsHovered4(true)}
-						onMouseLeave={() => setIsHovered4(false)}
 					>
-						<div
-							style={{
-								textAlign: "center",
-								marginTop: "10%",
-								color: "#333333",
-								fontSize: "20px",
-								fontWeight: "Bold",
-							}}
-						>
-							A day
-						</div>
-						<div
-							style={{
-								textAlign: "center",
-								marginTop: "1%",
-								color: "#333333",
-							}}
-						>
-							{" "}
-							<span
-								style={{ fontSize: "40px", fontWeight: "Bold" }}
+						A day
+					</div>
+					<div
+						style={{
+							textAlign: "center",
+							marginTop: "1%",
+							color: "#333333",
+						}}
+					>
+						{" "}
+						<span style={{ fontSize: "40px", fontWeight: "Bold" }}>
+							3k Rwf
+						</span>
+					</div>
+					<div
+						style={{
+							marginTop: "10%",
+							fontWeight: "bold",
+							color: "#333333",
+						}}
+					>
+						<div style={{ display: "flex", marginTop: "3%" }}>
+							<RxCheckCircled
+								style={{ color: "#333333" }}
+								size={24}
+							/>
+							<div
+								style={{
+									marginLeft: "1%",
+									fontSize: "24px",
+								}}
 							>
-								$2
-							</span>
+								1 Day
+							</div>
 						</div>
-						<div
-							style={{
-								marginTop: "10%",
-								fontWeight: "bold",
-								color: "#333333",
-							}}
-						>
-							<div style={{ display: "flex", marginTop: "3%" }}>
-								<RxCheckCircled
-									style={{ color: "#333333" }}
-									size={24}
-								/>
-								<div
-									style={{
-										marginLeft: "1%",
-										fontSize: "24px",
-									}}
-								>
-									1 Day
-								</div>
+						<div style={{ display: "flex", marginTop: "3%" }}>
+							<RxCheckCircled
+								style={{ color: "#333333" }}
+								size={24}
+							/>
+							<div
+								style={{
+									marginLeft: "1%",
+									fontSize: "24px",
+								}}
+							>
+								Fitness
 							</div>
-							<div style={{ display: "flex", marginTop: "3%" }}>
-								<RxCheckCircled
-									style={{ color: "#333333" }}
-									size={24}
-								/>
-								<div
-									style={{
-										marginLeft: "1%",
-										fontSize: "24px",
-									}}
-								>
-									Fitness
-								</div>
+						</div>
+						<div style={{ display: "flex", marginTop: "3%" }}>
+							<RxCrossCircled size={24} />
+							<div
+								style={{
+									marginLeft: "1%",
+									fontSize: "24px",
+								}}
+							>
+								Massage
 							</div>
-							<div style={{ display: "flex", marginTop: "3%" }}>
-								<RxCrossCircled size={24} />
-								<div
-									style={{
-										marginLeft: "1%",
-										fontSize: "24px",
-									}}
-								>
-									Massage
-								</div>
-							</div>
-							<div style={{ display: "flex", marginTop: "3%" }}>
-								<RxCrossCircled size={24} />
-								<div
-									style={{
-										marginLeft: "1%",
-										fontSize: "24px",
-									}}
-									Ï
-								>
-									Yoga
-								</div>
+						</div>
+						<div style={{ display: "flex", marginTop: "3%" }}>
+							<RxCrossCircled size={24} />
+							<div
+								style={{
+									marginLeft: "1%",
+									fontSize: "24px",
+								}}
+								Ï
+							>
+								Yoga
 							</div>
 						</div>
 					</div>
+				</div>
 				{/* one */}
 				<div
 					style={{
@@ -172,7 +169,7 @@ const Offers = () => {
 					>
 						{" "}
 						<span style={{ fontSize: "40px", fontWeight: "Bold" }}>
-							$10
+							15K Rwf
 						</span>
 					</div>
 					<div
@@ -248,7 +245,7 @@ const Offers = () => {
 					>
 						{" "}
 						<span style={{ fontSize: "40px", fontWeight: "Bold" }}>
-							$30
+							30k Rwf
 						</span>
 					</div>
 					<div
@@ -328,7 +325,7 @@ const Offers = () => {
 					>
 						{" "}
 						<span style={{ fontSize: "40px", fontWeight: "Bold" }}>
-							$50
+							50k Rwf
 						</span>
 						/mo
 					</div>
