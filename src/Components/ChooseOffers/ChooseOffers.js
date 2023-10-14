@@ -60,7 +60,7 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 	async function fetchData() {
 		try {
 			const response = await axios.get(
-				`${BASE_URL}/Trainer/find/${trainer}`
+				`${BASE_URL}/Trainer/find/${trainer._id}`
 			);
 
 			setData(response?.data);
@@ -75,7 +75,7 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 
 	const payment = async (packages, endDate) => {
 		const errors = [];
-		if (daysRemaining > 0) {
+		if (daysRemaining >= 0) {
 			errors.push(` you have ${daysRemaining} days left`);
 		}
 		if (!preference && daysRemaining < 0) {
@@ -96,6 +96,8 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 					datePaid: today,
 					package: packages,
 					endingDate: endDate,
+					trainerName: trainer.name,
+					timeofClass: trainer.schedule,
 				})
 				.then((res) => {
 					if (res.status === 200 || res.status === 201) {
@@ -119,7 +121,7 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 			endingDate: endingDate,
 		});
 		await axios
-			.put(`${BASE_URL}/Trainer/${trainer}`, {
+			.put(`${BASE_URL}/Trainer/${trainer._id}`, {
 				trainee: current,
 			})
 			.then((res) => {

@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavBtn, NavBtnLink } from "./style";
-import { BASE_URL } from "../../Helpers/requestMethod";
 import { useSelector } from "react-redux";
 import { logOutUser } from "../../Helpers/ApiCalls";
 import { useDispatch } from "react-redux";
 
-const HomeNavBar = ({data}) => {
+const HomeNavBar = ({ data }) => {
 	const today = new Date();
 	const states = useSelector((state) => state.Trainee);
+	const user = useSelector((state) => state.Trainee.currentUser);
 	const dispatch = useDispatch();
 	const handleClick = (e) => {
 		logOutUser(states, dispatch);
 	};
-
 
 	return (
 		<div>
@@ -37,26 +36,20 @@ const HomeNavBar = ({data}) => {
 						<span style={{ fontWeight: "bold" }}>Be</span>Fit
 					</div>
 				</div>
-				{data[0] && (
-					<div style={{ display: "flex" }}>
-						<NavBtn>
-							<NavBtnLink
-								style={{
-									backgroundColor: "black",
-									fontWeight: "bold",
-								}}
-							
-							>
-								{" "}
-								{Math.floor(
-									(new Date(data[0]?.endingDate) - today) /
-										(1000 * 3600 * 24)
-								)}{" "}
-								days remaining
-							</NavBtnLink>
-						</NavBtn>
-					</div>
-				)}
+				<div style={{ display: "flex" }}>
+					<NavBtn>
+						<NavBtnLink
+							style={{
+								backgroundColor: "black",
+								fontWeight: "bold",
+							}}
+							to="/"
+							onClick={() => handleClick()}
+						>
+							Hello, {user.name}
+						</NavBtnLink>
+					</NavBtn>
+				</div>
 
 				<div style={{ display: "flex" }}>
 					<NavBtn>

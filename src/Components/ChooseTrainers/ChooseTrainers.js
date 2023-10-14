@@ -73,7 +73,7 @@ const ChooseTrainers = ({ setTrainer }) => {
 						}}
 						onClick={() => {
 							setTrainerIndex(index);
-							setTrainer(element._id);
+							setTrainer(element);
 						}}
 						onMouseEnter={() => setIsHovered(index)}
 						onMouseLeave={() => setIsHovered(null)}

@@ -119,7 +119,7 @@ function SideBarManager() {
 				}}
 			/>
 
-			<div style={{ marginTop: "38vh" }} onClick={() => handleClick()}>
+			<div style={{ marginTop: "30vh" }} onClick={() => handleClick()}>
 				<div
 					style={{
 						display: "flex",
