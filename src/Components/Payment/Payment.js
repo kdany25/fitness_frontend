@@ -2,21 +2,49 @@ import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import axios from "axios";
 import { BASE_URL } from "../../Helpers/requestMethod";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Payment = () => {
 	const [data, setData] = useState([]);
-
-	useEffect(() => {
-		async function fetchData() {
-			try {
-				const response = await axios.get(`${BASE_URL}/Payment`);
-				setData(response?.data);
-			} catch (error) {
-				console.error(error);
-			}
+	async function fetchData() {
+		try {
+			const response = await axios.get(`${BASE_URL}/Payment`);
+			setData(response?.data);
+		} catch (error) {
+			console.error(error);
 		}
+	}
+	useEffect(() => {
 		fetchData();
 	}, []);
+
+	const deleteTrainee = async (trainerId, traineeId) => {
+		try {
+			const res = await axios.delete(
+				`${BASE_URL}/Trainer/${trainerId}/trainees/${traineeId}`
+			);
+			if (res.status === 200) {
+				toast.success("trainee is removed from class");
+				fetchData();
+			}
+		} catch (error) {
+			toast.error("failed");
+		}
+	};
+
+	const deletePayment = async (id, trainerId, traineeId) => {
+		try {
+			const res = await axios.delete(`${BASE_URL}/Payment/${id}`);
+			if (res.status === 200) {
+				toast.success("deleted successfully");
+				deleteTrainee(trainerId, traineeId);
+				fetchData();
+			}
+		} catch (error) {
+			toast.error("failed");
+		}
+	};
 
 	const columns = [
 		{
@@ -108,10 +136,39 @@ const Payment = () => {
 				</div>
 			),
 		},
+		{
+			name: "Action",
+			cell: (row) => (
+				<div style={{ width: "100%", display: "flex", gap: "10px" }}>
+					<div
+						style={{
+							borderRadius: "10px",
+							textAlign: "center",
+							backgroundColor: "#f2b3c4",
+							width: "50%",
+						}}
+						onClick={() =>
+							deletePayment(row._id, row.trainerId, row.traineeId)
+						}
+					>
+						<div
+							style={{
+								padding: "10%",
+								color: "red",
+								fontWeight: "bold",
+							}}
+						>
+							Delete
+						</div>
+					</div>
+				</div>
+			),
+		},
 	];
 
 	return (
 		<div style={{ marginRight: "2%", marginTop: "2%" }}>
+			<ToastContainer />
 			<div
 				style={{
 					fontSize: "20px",

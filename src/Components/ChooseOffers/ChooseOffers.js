@@ -98,6 +98,7 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 					endingDate: endDate,
 					trainerName: trainer.name,
 					timeofClass: trainer.schedule,
+					trainerId: trainer._id,
 				})
 				.then((res) => {
 					if (res.status === 200 || res.status === 201) {
