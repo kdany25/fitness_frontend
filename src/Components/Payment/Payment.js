@@ -42,7 +42,7 @@ const Payment = () => {
 				fetchData();
 			}
 		} catch (error) {
-			toast.error("failed");
+			toast.error("failed, try again");
 		}
 	};
 
