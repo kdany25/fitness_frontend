@@ -107,7 +107,7 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 					}
 				})
 				.catch((error) => {
-					toast.error("failed");
+					toast.error("failed, try again");
 				});
 		}
 	};
