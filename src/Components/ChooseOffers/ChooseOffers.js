@@ -7,6 +7,7 @@ import { BASE_URL } from "../../Helpers/requestMethod";
 import { useSelector } from "react-redux";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+import StripeCheckout from "react-stripe-checkout";
 
 export const JoinLink = styled.div`
 	border-radius: 50px;
@@ -52,6 +53,8 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 	const [isHovered3, setIsHovered3] = useState(false);
 	const [isHovered4, setIsHovered4] = useState(false);
 	const handleClose = () => setOpen(false);
+	const publishableKey =
+		"pk_test_51K2SfgJC3vAZmsFJSLKr1ZJr8b7X2zcWI1DN4EcWLMTb4II1sFWjxXZNzcIs8jugaYeRpYDmKlODbpuCFC5Y0tlS00Vi4TFItL";
 
 	const today = new Date();
 	const daysRemaining = Math.floor(
@@ -156,6 +159,79 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 		newDate.setDate(currentMonth + days);
 		return newDate;
 	}
+
+	const payNow = async (token) => {
+		try {
+			const response = await axios({
+				url: `${BASE_URL}/Payment/Stripe`,
+				method: "post",
+				data: {
+					amount: calculateMoney(3000),
+					token,
+				},
+			});
+			if (response.status === 200) {
+				payment("One-session", addDays(today, 2));
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	const payNowBronze = async (token) => {
+		try {
+			const response = await axios({
+				url: `${BASE_URL}/Payment/Stripe`,
+				method: "post",
+				data: {
+					amount: calculateMoney(15000),
+					token,
+				},
+			});
+			if (response.status === 200) {
+				payment("Bronze", addMonths(today, 1));
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	const payNowSilver = async (token) => {
+		try {
+			const response = await axios({
+				url: `${BASE_URL}/Payment/Stripe`,
+				method: "post",
+				data: {
+					amount: calculateMoney(30000),
+					token,
+				},
+			});
+			if (response.status === 200) {
+				payment("Silver", addMonths(today, 2));
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	const payNowGold = async (token) => {
+		try {
+			const response = await axios({
+				url: `${BASE_URL}/Payment/Stripe`,
+				method: "post",
+				data: {
+					amount: calculateMoney(50000),
+					token,
+				},
+			});
+			if (response.status === 200) {
+				payment("Gold", addMonths(today, 3));
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const calculateMoney = (money) => {
+		return (money / 1240) * 100;
+	};
 
 	return (
 		<>
@@ -303,20 +379,19 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 								marginTop: "10%",
 								display: "flex",
 								justifyContent: "center",
+								marginBottom: "5%",
 							}}
 						>
-							<JoinLink
-								style={{
-									color: "#FFFFFF",
-									backgroundColor: "#303030",
-									fontWeight: "bold",
-								}}
-								onClick={() =>
-									payment("One-session", addDays(today, 2))
-								}
-							>
-								Join
-							</JoinLink>
+							<StripeCheckout
+								stripeKey={publishableKey}
+								label="Pay Now"
+								name="Pay With Credit Card"
+								billingAddress
+								shippingAddress
+								amount={calculateMoney(3000)}
+								description={`Your total is $${3000 / 1240}`}
+								token={payNow}
+							/>
 						</div>
 					</div>
 					{/* one */}
@@ -421,18 +496,16 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 								justifyContent: "center",
 							}}
 						>
-							<JoinLink
-								style={{
-									color: "#FFFFFF",
-									backgroundColor: "#303030",
-									fontWeight: "bold",
-								}}
-								onClick={() =>
-									payment("Bronze", addMonths(today, 1))
-								}
-							>
-								Join
-							</JoinLink>
+							<StripeCheckout
+								stripeKey={publishableKey}
+								label="Pay Now"
+								name="Pay With Credit Card"
+								billingAddress
+								shippingAddress
+								amount={calculateMoney(15000)}
+								description={`Your total is $${15000 / 1240}`}
+								token={payNowBronze}
+							/>
 						</div>
 					</div>
 
@@ -542,18 +615,16 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 								justifyContent: "center",
 							}}
 						>
-							<JoinLink
-								style={{
-									color: "#FFFFFF",
-									backgroundColor: "#303030",
-									fontWeight: "bold",
-								}}
-								onClick={() =>
-									payment("Silver", addMonths(today, 2))
-								}
-							>
-								Join
-							</JoinLink>
+							<StripeCheckout
+								stripeKey={publishableKey}
+								label="Pay Now"
+								name="Pay With Credit Card"
+								billingAddress
+								shippingAddress
+								amount={calculateMoney(30000)}
+								description={`Your total is $${30000 / 1240}`}
+								token={payNowSilver}
+							/>
 						</div>
 					</div>
 
@@ -667,18 +738,16 @@ const ChooseOffers = ({ preference, trainer, paidTrainee }) => {
 								justifyContent: "center",
 							}}
 						>
-							<JoinLink
-								style={{
-									color: "#FFFFFF",
-									backgroundColor: "#303030",
-									fontWeight: "bold",
-								}}
-								onClick={() =>
-									payment("Gold", addMonths(today, 3))
-								}
-							>
-								Join
-							</JoinLink>
+							<StripeCheckout
+								stripeKey={publishableKey}
+								label="Pay Now"
+								name="Pay With Credit Card"
+								billingAddress
+								shippingAddress
+								amount={calculateMoney(50000)}
+								description={`Your total is $${50000 / 1240}`}
+								token={payNowGold}
+							/>
 						</div>
 					</div>
 				</div>

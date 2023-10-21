@@ -113,6 +113,25 @@ const Home = () => {
 					/>
 				</div>
 			</div>
+			<div
+				style={{
+					display: "flex",
+
+					marginLeft: "5%",
+					marginRight: "5%",
+					marginTop: "5%",
+					justifyContent: "center",
+				}}
+			>
+				<img
+					src="https://i.ibb.co/dQ5bJgP/burberry.png"
+					height={100}
+					width={100}
+				/>
+				<div style={{ fontSize: 30, marginTop: "2%" }}>
+					<span style={{ fontWeight: "bold" }}>Be</span>Fit
+				</div>
+			</div>
 		</div>
 	);
 };
