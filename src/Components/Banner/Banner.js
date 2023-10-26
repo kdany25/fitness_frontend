@@ -28,7 +28,7 @@ const Banner = () => {
 		<div>
 			<div style={{ display: "flex" }}>
 				<div style={{ width: "40%" }}>
-					<div style={{ fontSize: "150px", fontWeight: "bold" }}>
+					<div style={{ fontSize: "120px", fontWeight: "bold" }}>
 						Fitness Fusion
 					</div>
 					<div
