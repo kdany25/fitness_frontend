@@ -45,6 +45,11 @@ const Payment = () => {
 			toast.error("failed, try again");
 		}
 	};
+	function formatMongoDBDate(dateString) {
+		const dateObject = new Date(dateString);
+		const formattedDate = dateObject.toISOString().split("T")[0];
+		return formattedDate;
+	}
 
 	const columns = [
 		{
@@ -110,9 +115,92 @@ const Payment = () => {
 			),
 		},
 		{
-			name: "Days remaining",
+			name: "Amount",
 			cell: (row) => (
 				<div style={{ width: "70%" }}>
+					<div
+						style={{
+							borderRadius: "10px",
+							textAlign: "center",
+							backgroundColor: "#D9F3EA",
+						}}
+					>
+						{row.package === "One-session" && (
+							<div
+								style={{
+									padding: "10%",
+									color: "#67C7A3",
+									fontWeight: "bold",
+								}}
+							>
+								3K Rwf
+							</div>
+						)}
+						{row.package === "Bronze" && (
+							<div
+								style={{
+									padding: "10%",
+									color: "#67C7A3",
+									fontWeight: "bold",
+								}}
+							>
+								15K Rwf
+							</div>
+						)}
+						{row.package === "Silver" && (
+							<div
+								style={{
+									padding: "10%",
+									color: "#67C7A3",
+									fontWeight: "bold",
+								}}
+							>
+								30K Rwf
+							</div>
+						)}
+						{row.package === "Gold" && (
+							<div
+								style={{
+									padding: "10%",
+									color: "#67C7A3",
+									fontWeight: "bold",
+								}}
+							>
+								50K Rwf
+							</div>
+						)}
+					</div>
+				</div>
+			),
+		},
+		{
+			name: "Paid At",
+			cell: (row) => (
+				<div style={{ width: "70%" }}>
+					<div
+						style={{
+							borderRadius: "10px",
+							textAlign: "center",
+							backgroundColor: "#D9F3EA",
+						}}
+					>
+						<div
+							style={{
+								padding: "10%",
+								color: "#67C7A3",
+								fontWeight: "bold",
+							}}
+						>
+							{formatMongoDBDate(row.createdAt)}
+						</div>
+					</div>
+				</div>
+			),
+		},
+		{
+			name: "Days remaining",
+			cell: (row) => (
+				<div style={{ width: "50%" }}>
 					<div
 						style={{
 							borderRadius: "10px",
@@ -165,6 +253,31 @@ const Payment = () => {
 			),
 		},
 	];
+	const calculateTotalMoney = (data) => {
+		let totalMoney = 0;
+
+		data.forEach((item) => {
+			// Determine the money based on the "package" property
+			switch (item.package) {
+				case "One-session":
+					totalMoney += 3000;
+					break;
+				case "Bronze":
+					totalMoney += 15000;
+					break;
+				case "Silver":
+					totalMoney += 30000;
+					break;
+				case "Gold":
+					totalMoney += 50000;
+					break;
+				default:
+					break;
+			}
+		});
+
+		return totalMoney;
+	};
 
 	return (
 		<div style={{ marginRight: "2%", marginTop: "2%" }}>
@@ -180,6 +293,15 @@ const Payment = () => {
 			</div>
 
 			<DataTable columns={columns} data={data || []}></DataTable>
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					padding: "10px",
+				}}
+			>
+				<div style={{fontSize:'20px', color:'#67C7A3', fontWeight:'bold'}}>Total: {calculateTotalMoney(data)}</div>
+			</div>
 		</div>
 	);
 };

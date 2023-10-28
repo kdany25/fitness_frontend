@@ -17,6 +17,11 @@ const LIstTrainees = () => {
 		}
 		fetchData();
 	}, []);
+	function formatMongoDBDate(dateString) {
+		const dateObject = new Date(dateString);
+		const formattedDate = dateObject.toISOString().split('T')[0];
+		return formattedDate;
+	}
 
 	const columns = [
 		{
@@ -76,6 +81,30 @@ const LIstTrainees = () => {
 							}}
 						>
 							{row.email}
+						</div>
+					</div>
+				</div>
+			),
+		},
+		{
+			name: "Joined At",
+			cell: (row) => (
+				<div style={{ width: "50%" }}>
+					<div
+						style={{
+							borderRadius: "10px",
+							textAlign: "center",
+							backgroundColor: "#D9F3EA",
+						}}
+					>
+						<div
+							style={{
+								padding: "10%",
+								color: "#67C7A3",
+								fontWeight: "bold",
+							}}
+						>
+							{formatMongoDBDate(row.createdAt)}
 						</div>
 					</div>
 				</div>
