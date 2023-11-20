@@ -175,7 +175,19 @@ const Login = () => {
 						Login
 					</LoginBtn>
 				</div>
-				<Link to="/loginTrainer">
+				<Link to="/resetTrainee" style={{ textDecoration: "none" }}>
+					<div
+						style={{
+							color: "#A3A5BB",
+							marginTop: "5%",
+							fontSize: "18px",
+							marginLeft: "5%",
+						}}
+					>
+						Forgot Password ?
+					</div>
+				</Link>
+				<Link to="/loginTrainer" style={{ textDecoration: "none" }}>
 					<div
 						style={{
 							color: "#A3A5BB",
@@ -187,7 +199,7 @@ const Login = () => {
 						Login As Trainer
 					</div>
 				</Link>
-				<Link to="/loginManager">
+				<Link to="/loginManager" style={{ textDecoration: "none" }}>
 					<div
 						style={{
 							color: "#A3A5BB",

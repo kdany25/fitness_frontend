@@ -17,6 +17,12 @@ import AddManager from "./Pages/AddManager/AddManager";
 import PaymentList from "./Pages/Payment/PaymentList";
 import UpdateTrainers from "./Pages/UpdateTra/UpdateTrainer";
 import TraineesList from "./Pages/TraineesList/List";
+import ResetTrainee from "./Pages/ResetPassword/ResetTrainee";
+import UpdatePassword from "./Pages/ResetPassword/UpdatePassword";
+import UpdatePasswordTrainer from "./Pages/ResetPasswordTrainer/UpdatePassword";
+import ResetTrainer from "./Pages/ResetPasswordTrainer/ResetTrainer";
+import UpdatePasswordManager from "./Pages/ResetPasswordManager/UpdatePassword";
+import ResetManager from "./Pages/ResetPasswordManager/ResetManager";
 
 function App() {
 	const trainee = useSelector((state) => state.Trainee?.currentUser);
@@ -40,6 +46,38 @@ function App() {
 							exact
 							path="/loginManager"
 							element={<LoginManager />}
+						/>
+						<Route
+							exact
+							path="/resetTrainee"
+							element={<ResetTrainee />}
+						/>
+						<Route
+							exact
+							path="/passwordReset"
+							element={<UpdatePassword />}
+						/>
+
+						<Route
+							exact
+							path="/resetTrainer"
+							element={<ResetTrainer />}
+						/>
+						<Route
+							exact
+							path="/passwordResetTrainer"
+							element={<UpdatePasswordTrainer />}
+						/>
+
+						<Route
+							exact
+							path="/resetManager"
+							element={<ResetManager />}
+						/>
+						<Route
+							exact
+							path="/passwordResetManager"
+							element={<UpdatePasswordManager />}
 						/>
 					</Routes>
 				)}
@@ -74,7 +112,10 @@ function App() {
 								path="/addManager"
 								element={<AddManager />}
 							/>
-							<Route path="/trainees" element={<TraineesList />} />
+							<Route
+								path="/trainees"
+								element={<TraineesList />}
+							/>
 							<Route path="/payment" element={<PaymentList />} />
 						</Routes>
 					</div>

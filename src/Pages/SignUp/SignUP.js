@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { SignINLink, SignUpBtn } from "./style";
 import axios from "axios";
 import { BASE_URL } from "../../Helpers/requestMethod";
-import { Navigate } from "react-router-dom";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { ToastContainer, toast } from "react-toastify";

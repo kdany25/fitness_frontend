@@ -143,7 +143,19 @@ const LoginManager = () => {
 						Login
 					</LoginBtn>
 				</div>
-				<Link to="/login">
+				<Link to="/resetManager" style={{ textDecoration: "none" }}>
+					<div
+						style={{
+							color: "#A3A5BB",
+							marginTop: "5%",
+							fontSize: "18px",
+							marginLeft: "5%",
+						}}
+					>
+						Forgot Password ?
+					</div>
+				</Link>
+				<Link to="/login" style={{ textDecoration: "none" }}>
 					<div
 						style={{
 							color: "#A3A5BB",
@@ -155,7 +167,7 @@ const LoginManager = () => {
 						Login As Trainee
 					</div>
 				</Link>
-				<Link to="/loginTrainer">
+				<Link to="/loginTrainer" style={{ textDecoration: "none" }}>
 					<div
 						style={{
 							color: "#A3A5BB",

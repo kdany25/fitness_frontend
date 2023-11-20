@@ -99,7 +99,7 @@ const LoginTrainer = () => {
 
 					<div style={{ marginTop: "2%" }}>
 						<input
-						type={showPassword ? "text" : "password"}
+							type={showPassword ? "text" : "password"}
 							placeholder="Your Password"
 							style={{
 								padding: "20px",
@@ -149,7 +149,19 @@ const LoginTrainer = () => {
 						Login
 					</LoginBtn>
 				</div>
-				<Link to="/login">
+				<Link to="/resetTrainer" style={{ textDecoration: "none" }}>
+					<div
+						style={{
+							color: "#A3A5BB",
+							marginTop: "5%",
+							fontSize: "18px",
+							marginLeft: "5%",
+						}}
+					>
+						Forgot Password ?
+					</div>
+				</Link>
+				<Link to="/login" style={{ textDecoration: "none" }}>
 					<div
 						style={{
 							color: "#A3A5BB",
@@ -161,7 +173,7 @@ const LoginTrainer = () => {
 						Login As Trainee
 					</div>
 				</Link>
-				<Link to="/loginManager">
+				<Link to="/loginManager" style={{ textDecoration: "none" }}>
 					<div
 						style={{
 							color: "#A3A5BB",
